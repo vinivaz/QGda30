@@ -34,4 +34,4 @@ connectDB();
 app.use('/', require('./src/publicRoutes'))
 app.use('/app', require('./src/privateRoutes'))
 
-app.listen('3333', ()=>{console.log('server runnin at 3333 port')})
+app.listen('3333', ()=>{console.log('server runnin at 3333 port yeeyy')})
