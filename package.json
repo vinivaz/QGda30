@@ -10,9 +10,10 @@
   "scripts": {
 
     "start": "node server.js",
-    "build": "webpack --config webpack.prodev.js",
+    "build": "node server.js",
     "client-server":"webpack-dev-server --config webpack.dev.js",
-    "start-server": " nodemon server.js"
+    "start-server": " nodemon server.js",
+    "other-build": "webpack --config webpack.prodev.js"
     
   },
   "author": "",
