@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-server": " nodemon server.js",
-    "start": "webpack-dev-server --config webpack.dev.js",
-    "build": "webpack --config webpack.prodev.js"
+
+    "start": "node server.js",
+    "build": "webpack --config webpack.prodev.js",
+    "client-server":"webpack-dev-server --config webpack.dev.js",
+    "start-server": " nodemon server.js"
     
   },
   "author": "",

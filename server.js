@@ -5,6 +5,8 @@ const cors = require('cors')
 
 const connectDB = require('./src/database');
 
+const port = process.env.PORT || 3333;
+
 const app = express();
 app
 .use(cors())
@@ -34,4 +36,4 @@ connectDB();
 app.use('/', require('./src/publicRoutes'))
 app.use('/app', require('./src/privateRoutes'))
 
-app.listen('3333', ()=>{console.log('server runnin at 3333 port yeeyy')})
+app.listen(port, ()=>{console.log(`server runnin at ${port} port yeeyy`)})
