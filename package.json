@@ -10,6 +10,7 @@
   "scripts": {
 
     "start": "node server.js",
+    "test": "node server.js",
     
     "client-server":"webpack-dev-server --config webpack.dev.js",
     "start-server": " nodemon server.js",
