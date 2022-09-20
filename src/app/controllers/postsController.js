@@ -203,7 +203,7 @@ routes.delete('/:postId', async(req, res) => {
 routes.post('/save_image', imgHandler, async(req, res) => {
     try{
           
-        const url = `http://localhost:3333/images/${req.file.filename}`
+        const url = `https://qgda30.herokuapp.com/images/${req.file.filename}`
         
         return res.json(url)
     }catch(err){
