@@ -14,7 +14,8 @@
     
     "client-server":"webpack-dev-server --config webpack.dev.js",
     "start-server": " nodemon server.js",
-    "other-build": "webpack --config webpack.prodev.js"
+    "other-build": "webpack --config webpack.prodev.js",
+    "main-build": "webpack --config webpack.prod.js"
     
   },
   "author": "",

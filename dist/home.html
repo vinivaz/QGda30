@@ -1,7 +1,94 @@
-<!doctype html><html lang="pt-br"><head><link rel="icon" href="../assets/91876-F4-D-5-D89-45-D7-928-A-B6-F6-E6-A06513.jpg"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>QGda30</title><script defer="defer" src="home.bundle.js"></script></head><body><div id="webSiteContent"><nav class="nav-bar"><div class="logo"><img src="https://i.ibb.co/ZLh3w4c/54695-C6-C-A1-AA-4375-9-D90-44-F9-B53-D459-B.png" alt="54695-C6-C-A1-AA-4375-9-D90-44-F9-B53-D459-B" border="0"/></div><div class="navigation-opts"><a href="storage.html">Overview</a> <a href="storage.html">Storage</a></div></nav><div class="main"><div id="sync1" class="owl-carousel owl-theme"> <% posts.forEach(function(post, i){
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="icon" href="../assets/91876-F4-D-5-D89-45-D7-928-A-B6-F6-E6-A06513.jpg">
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>QGda30</title>
+
+<script defer="defer" src="home.23d6895066c0c601f066.bundle.js"></script><link href="home.97f4e5daa8adad3ee5ff.css" rel="stylesheet"></head>
+
+<body>
+    <div id="webSiteContent">
+        <nav class="nav-bar">
+            <div class="logo">
+                
+                <img src="https://i.ibb.co/ZLh3w4c/54695-C6-C-A1-AA-4375-9-D90-44-F9-B53-D459-B.png" alt="54695-C6-C-A1-AA-4375-9-D90-44-F9-B53-D459-B" border="0">
+            </div>
+            <div class="navigation-opts">
+                <a href="storage.html">Overview</a>
+                <a href="storage.html">Storage</a>
+            </div>
+        </nav>
+        <div class="main">
+          <div id="sync1" class="owl-carousel owl-theme">
+          <% posts.forEach(function(post, i){
             if(posts.length > 4){
-              if(i < 4){ %> <a class="banner" href="http://localhost:3333/<%=post.slug%>"><img src="<%=post.img%>"><div class="foundation"><p class="title"><%=post.title%></p></div></a> <%}
-            }else{ %> <a class="banner" href="http://localhost:3333/<%=post.slug%>"><img src="<%=post.img%>"><div class="foundation"><p class="title"><%=post.title%></p></div></a> <% }
-          }) %> </div><div id="sync2" class="owl-carousel owl-theme"> <% posts.forEach(function(post, i){%> <div class="item"><div class="post"><div class="cover"><div class="cover-place"><img src="<%=post.img%>"></div></div><div class="data"><div class="title"><p><%=post.title%></p></div></div></div></div> <%})%> </div><div class="more-posts"><h3>Publicações</h3><div class="posts"> <% posts.forEach(function(post, i){
-                if(i > 4 && i < 8){ %> <a class="post" href="http://localhost:3333/<%=post.slug%>"><div class="cover"><img src="<%=post.img%>"></div><div class="content"><h3><%=post.title%></h3><div class="date"><%=post.date%></div><div class="brief-content"><%=post.briefContent%></div></div></a> <%}
-              })%> </div></div></div><footer></footer></div></body></html>
+              if(i < 4){ %>
+                  <a class="banner" href="https://qgda30.herokuapp.com/<%=post.slug%>">
+                    <img src="<%=post.img%>">
+                    <div class="foundation">
+                      <p class="title"><%=post.title%></p>
+                    </div>
+
+                  </a>     
+            <%}
+            }else{ %>
+              <a class="banner" href="https://qgda30.herokuapp.com/<%=post.slug%>">
+                <img src="<%=post.img%>">
+                <div class="foundation">
+                  <p class="title"><%=post.title%></p>
+                </div>
+              </a>
+            <% }
+          }) %>
+          </div>
+
+          <div id="sync2" class="owl-carousel owl-theme">
+            <% posts.forEach(function(post, i){%>
+              <div class="item">
+                <div class="post">
+                  <div class="cover">
+                    <div class="cover-place">
+                      <img src="<%=post.img%>">
+                    </div>
+                  </div>
+                  <div class="data">
+                    <div class="title"><p><%=post.title%></p></div>
+                  </div>
+                </div>
+              </div>
+            <%})%>
+          </div>
+
+          <div class="more-posts">
+            <h3>Publicações</h3>
+            <div class="posts">
+              <% posts.forEach(function(post, i){
+                if(i > 4 && i < 8){ %>
+                  <a class="post" href="https://qgda30.herokuapp.com/<%=post.slug%>">
+                    <div class="cover"><img src="<%=post.img%>"></div>
+                    <div class="content">
+                      <h3><%=post.title%></h3>
+                      <div class="date"><%=post.date%></div>
+                      <div class="brief-content"><%=post.briefContent%></div>
+                    </div>
+                  </a>
+                <%}
+              })%>
+            </div>
+
+          </div>
+        </div>
+            
+
+        <footer></footer>
+    </div>
+
+    
+</body>
+
+</html>

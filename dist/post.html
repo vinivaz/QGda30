@@ -1,27 +1,194 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title> <%= post.title %> </title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script defer="defer" src="post.bundle.js"></script></head><body><div id="content"><nav class="nav-bar"><div class="logo"><img src="https://i.ibb.co/ZLh3w4c/54695-C6-C-A1-AA-4375-9-D90-44-F9-B53-D459-B.png" alt="54695-C6-C-A1-AA-4375-9-D90-44-F9-B53-D459-B" border="0"/></div></nav><div class="main"><div class="post"><div class="post-header"><h1><%=post.title %></h1><div class="post-details"><span><%=post.author.name %></span><span><%=post.date %></span></div></div><div class="share-buttons"><a href="javascript:void(0)" onclick="twitter()" data-title="Title" data-tags="Tags" title="Compatilhar no Twitter" class="share-button tt-button"><img src="images/twitter-circle.svg"> </a><a href="javascript:void(0)" onclick="whatsapp()" title="Compatilhar no Whatsapp" class="share-button wpp-button"><img src="images/whatsapp-circle.svg"> </a><a href="javascript:void(0)" title="Compatilhar no Facebook" onclick="share(0)" class="share-button fb-button"><img src="images/facebook-circle.svg"> </a><a href="javascript:void(0)" title="Compatilhar no Google plus" onclick="share(1)" class="share-button gp-button"><img src="images/google-plus-circle.svg"> </a><a href="javascript:void(0)" onclick="share(7)" class="share-button pt-button" title="Compatilhar no Pinterest"><img src="images/pinterest-circle.svg"> </a><a href="javascript:void(0)" onclick="share(3)" class="share-button rd-button" title="Compatilhar no Reddit"><img src="images/reddit-circle.svg"> </a><a href="javascript:void(0)" onclick="share(4)" class="share-button ld-button" title="Share on LinkedIn"><img src="images/linkedin-circle.svg" width="50px"></a></div><div class="post-body"><div class="post-blocks"> <% post.blocks.forEach(function(block){
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    
+
+    <title>
+        <%= post.title %>
+    </title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script defer="defer" src="post.a6ab46f691b20d5ac62f.bundle.js"></script><link href="post.cedce25bd80bb4a0cad1.css" rel="stylesheet"></head>
+<body>
+<div id="content">
+  <nav class="nav-bar">
+    <div class="logo">
+      
+      <img src="https://i.ibb.co/ZLh3w4c/54695-C6-C-A1-AA-4375-9-D90-44-F9-B53-D459-B.png" alt="54695-C6-C-A1-AA-4375-9-D90-44-F9-B53-D459-B" border="0">
+    </div>
+  </nav>
+  <div class="main">
+
+    <div class="post">
+      <div class="post-header">
+        <h1><%=post.title %></h1>
+        <div class="post-details">
+          <span><%=post.author.name %></span>
+          <span><%=post.date %></span>
+        </div>
+      </div>
+      <div class="share-buttons">
+        <a href="javascript:void(0)" onclick="twitter()" data-title="Title" data-tags="Tags" title="Compatilhar no Twitter" class="share-button tt-button">
+          <img src="images/twitter-circle.svg">
+        </a>
+        
+        <a href="javascript:void(0)" onclick="whatsapp()" title="Compatilhar no Whatsapp" class="share-button wpp-button">
+          <img src="images/whatsapp-circle.svg">
+        </a>
+
+        <a href="javascript:void(0)" title="Compatilhar no Facebook" onclick="share(0)" class="share-button fb-button">
+          <img src="images/facebook-circle.svg">
+        </a>
+
+        <a href="javascript:void(0)" title="Compatilhar no Google plus" onclick="share(1)" class="share-button gp-button">
+          <img src="images/google-plus-circle.svg">
+        </a>
+
+        <a href="javascript:void(0)" onclick="share(7)" class="share-button pt-button" title="Compatilhar no Pinterest">
+          <img src="images/pinterest-circle.svg">
+        </a>
+
+        <a href="javascript:void(0)" onclick="share(3)" class="share-button rd-button" title="Compatilhar no Reddit">
+          <img src="images/reddit-circle.svg">
+        </a>
+
+        
+
+        <a href="javascript:void(0)" onclick="share(4)" class="share-button ld-button" title="Share on LinkedIn">
+          <img src="images/linkedin-circle.svg" width="50px">
+        </a>
+      </div>
+      <div class="post-body">
+        <div class="post-blocks">
+          <% post.blocks.forEach(function(block){
              switch (block.type) {
-              case 'img' : %> <div class="block img"><img src="<%=block.url%>"><div class="img-details"> <%block.description? 
+              case 'img' : %>
+                <div class="block img">
+                  <img src="<%=block.url%>">
+                  <div class="img-details">
+                    <%block.description? 
                       `<div class="description">
                         <span>${block.description}</span>
                       </div>`
                     :
                       ''
-                    %> <%block.credits?
+                    %>
+                    <%block.credits?
                       `<div class="link">
                         <a href="${block.credits.link}" target="_blank" rel="noopener noreferrer">${block.credits.content}</a>
                       </div>`
                     :
                       ''
-                    %> </div></div> <% break;
-              case 'text' : %> <div class="block txt"><p><%-block.content%></p></div> <% break;
+                    %>
+                  </div>
+                </div>
+              <% break;
+              case 'text' : %>
+                <div class="block txt">
+                  <p><%-block.content%></p>
+                </div>
+              <% break;
               
-              case 'yt-embed' : %> <div class="block yt"><div class="block-content" vdid="<%=block.content%>" id="<%=block.id%>-yt"><div id="<%=block.id%>-video"></div></div></div> <% break;
-              case 'tt-embed' : %> <div class="block tt"><div class="block-content" ttid="<%=block.content%>" id="<%=block.id%>-tt"></div></div> <% break;
+              case 'yt-embed' : %>
+              <div class="block yt">
+                <div class="block-content" vdid="<%=block.content%>" id="<%=block.id%>-yt">
+                  <div id="<%=block.id%>-video"></div>
+                  
+                </div>
+              </div>
+              
+                
+              <% break;
+              case 'tt-embed' : %>
+              <div class="block tt">
+                <div class="block-content" ttid="<%=block.content%>" id="<%=block.id%>-tt">
+                  
+                </div>
+              </div>
+              <% break;
               }
-          })%> </div></div></div><div class="side-content"><div class="sqr-ads-container"><div class="ads-controls"><button class="previous">&lt;</button> <button class="next">&gt;</button></div><div class="ads"> <% ads.forEach(function(adItem, i){
-            if(adItem.squarePicture.url != ""){%> <a href="<%=adItem.link%>" class="ad <%=i == 0? "current" : ""%>"><img src="<%=adItem.squarePicture.url%>"> </a> <%}
-          })%> </div></div><div class="posts-container"><div class="posts-navigation"><button class="prev">&lt;</button> <button class="next">&gt;</button></div><div class="posts"> <% posts.forEach(function(postItem, i){ %> <%if(postItem.id !== post.id){ 
-              if(posts[0].id != post.id){%> <a class="post-item <%=i == 0? "open" : ""%>" title="<%=postItem.title%>" href="http://localhost:3333/<%=postItem.slug%>"><div class="post-content"><div class="img-place"><img class="post-img" src="<%=postItem.img%>"></div><div class="post-data"><span class="post-title"><%=postItem.title%></span><div class="post-details"><span class="post-author"><%=postItem.author.name%></span><span class="post-date"><%=postItem.date%></span></div><span class="brief-content"> <%-postItem.briefContent%> </span></div></div></a> <%}else{%> <a class="post-item <%=i == 1? "open" : ""%>" title="<%=postItem.title%>" href="http://localhost:3333/<%=postItem.slug%>"><div class="post-content"><div class="img-place"><img class="post-img" src="<%=postItem.img%>"></div><div class="post-data"><span class="post-title"><%=postItem.title%></span><div class="post-details"><span class="post-author"><%=postItem.author.name%></span><span class="post-date"><%=postItem.date%></span></div><div class="brief-content"> <%-postItem.briefContent%> </div></div></div></a> <%}
+          })%>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-content">
+      <div class="sqr-ads-container">
+        <div class="ads-controls">
+          <button class="previous">&lt;</button>
+          <button class="next">&gt;</button>
+        </div>
+        <div class="ads">
+          <% ads.forEach(function(adItem, i){
+            if(adItem.squarePicture.url != ""){%>
+              <a href="<%=adItem.link%>" class="ad <%=i == 0? "current" : ""%>">
+                <img src="<%=adItem.squarePicture.url%>">
+              </a>
+            <%}
+          })%>
+        </div>
+      </div>
+      <div class="posts-container">
+        <div class="posts-navigation">
+          <button class="prev">&lt;</button>
+          <button class="next">&gt;</button>
+        </div>
+        <div class="posts">
+          <% posts.forEach(function(postItem, i){ %>
+            <%if(postItem.id !== post.id){ 
+              if(posts[0].id != post.id){%>
+                <a class="post-item <%=i == 0? "open" : ""%>" title="<%=postItem.title%>" href="https://qgda30.herokuapp.com/<%=postItem.slug%>">
+                  <div class="post-content">
+                    <div class="img-place">
+                        <img class="post-img" src="<%=postItem.img%>">
+                    </div>
+                    <div class="post-data">
+                        <span class="post-title"><%=postItem.title%></span>
+                        <div class="post-details">
+                            <span class="post-author"><%=postItem.author.name%></span>
+                            <span class="post-date"><%=postItem.date%></span>
+                        </div>
+                        <span class="brief-content">
+                          <%-postItem.briefContent%>
+                        </span>
+                    </div>
+                  </div>
+                </a>
+              <%}else{%>
+                <a class="post-item <%=i == 1? "open" : ""%>" title="<%=postItem.title%>" href="https://qgda30.herokuapp.com/<%=postItem.slug%>">
+                  <div class="post-content">
+                    <div class="img-place">
+                        <img class="post-img" src="<%=postItem.img%>">
+                    </div>
+                    <div class="post-data">
+                        <span class="post-title"><%=postItem.title%></span>
+                        <div class="post-details">
+                            <span class="post-author"><%=postItem.author.name%></span>
+                            <span class="post-date"><%=postItem.date%></span>
+                        </div>
+                        <div class="brief-content">
+                          <%-postItem.briefContent%>
+                        </div>
+                    </div>
+                  </div>
+                </a>
+              <%}
             }
             
-          })%> </div></div></div></div></div><script id="www-widgetapi-script" src="https://s.ytimg.com/yts/jsbin/www-widgetapi-vflS50iB-/www-widgetapi.js" async=""></script><script src="https://www.youtube.com/player_api"></script><script sync src="https://platform.twitter.com/widgets.js"></script></body></html>
+          })%>
+        </div>
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+<script type="text/javascript" id="www-widgetapi-script" src="https://s.ytimg.com/yts/jsbin/www-widgetapi-vflS50iB-/www-widgetapi.js" async=""></script>
+<script src="https://www.youtube.com/player_api"></script>
+<script sync src="https://platform.twitter.com/widgets.js"></script>
+</body>
+</html>

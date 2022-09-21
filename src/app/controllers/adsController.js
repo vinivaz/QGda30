@@ -140,7 +140,7 @@ routes.delete('/:adId', async(req, res) => {
 routes.post('/save_ad_image', imgHandler, async(req, res) => {
     try{
         console.log(req.file)
-        const url = `http://localhost:3333/ad/${req.file.filename}`
+        const url = `https://qgda30.herokuapp.com/ad/${req.file.filename}`
         
         return res.json(url)
     }catch(err){
