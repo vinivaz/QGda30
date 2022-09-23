@@ -81,7 +81,23 @@
                 })%>
               </div>
             </div>
-            <div class="side-content"></div>
+            <div class="side-content">
+              <div class="sqr-ads-container">
+                <div class="ads-controls">
+                  <button class="previous">&lt;</button>
+                  <button class="next">&gt;</button>
+                </div>
+                <div class="ads">
+                  <% ads.forEach(function(adItem, i){
+                    if(adItem.squarePicture.url != ""){%>
+                      <a href="<%=adItem.link%>" class="ad <%=i == 0? "current" : ""%>">
+                        <img src="<%=adItem.squarePicture.url%>">
+                      </a>
+                    <%}
+                  })%>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
             
