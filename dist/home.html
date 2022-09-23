@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>QGda30</title>
 
-<script defer="defer" src="home.23d6895066c0c601f066.bundle.js"></script><link href="home.88f118056d1409a15e24.css" rel="stylesheet"></head>
+<script defer="defer" src="home.23d6895066c0c601f066.bundle.js"></script><link href="home.fa5eb9a24ba7f2730a1e.css" rel="stylesheet"></head>
 
 <body>
     <div id="webSiteContent">
@@ -63,24 +63,24 @@
               </div>
             <%})%>
           </div>
-
-          <div class="more-posts">
-            <h3>Publicações</h3>
-            <div class="posts">
-              <% posts.forEach(function(post, i){
-                if(i > 4 && i < 8){ %>
-                  <a class="post" href="https://qgda30.herokuapp.com/<%=post.slug%>">
-                    <div class="cover"><img src="<%=post.img%>"></div>
-                    <div class="content">
-                      <h3><%=post.title%></h3>
-                      <div class="date"><%=post.date%></div>
-                      <div class="brief-content"><p><%=post.briefContent%></p></div>
-                    </div>
-                  </a>
-                <%}
-              })%>
+          <div class="more-content">
+            <div class="more-posts">
+              <h3>Publicações</h3>
+              <div class="posts">
+                <% posts.forEach(function(post, i){
+                  if(i > 4 && i < 8){ %>
+                    <a class="post" href="https://qgda30.herokuapp.com/<%=post.slug%>">
+                      <div class="cover"><img src="<%=post.img%>"></div>
+                      <div class="content">
+                        <h3><%=post.title%></h3>
+                        <div class="date"><%=post.date%></div>
+                        <div class="brief-content"><p><%=post.briefContent%></p></div>
+                      </div>
+                    </a>
+                  <%}
+                })%>
+              </div>
             </div>
-
           </div>
         </div>
             
