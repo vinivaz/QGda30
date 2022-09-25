@@ -5,7 +5,7 @@ const homeModel = require('../models/home')
 
 const authConfig = require('../middlewares/auth');
 
-routes.use(authConfig)
+// routes.use(authConfig)
 
 
 routes.get('/', async(req, res) => {
@@ -60,6 +60,8 @@ routes.post('/', async(req, res) => {
 routes.put('/', async(req, res) => {
     try{
         const { banner, morePosts, highlights } = req.body.homeConfig;
+
+
         
         const updatedHomePage = await homeModel.findByIdAndUpdate(
             _id,
