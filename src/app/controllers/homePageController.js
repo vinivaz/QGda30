@@ -1,10 +1,7 @@
 const routes = require('express').Router();
-const path = require('path')
-const fs = require('fs')
-const slugify = require('slugify')
-const postsModel = require('../models/posts')
+
 const homeModel = require('../models/home')
-const imgHandler = require('../middlewares/multer');
+
 
 const authConfig = require('../middlewares/auth');
 
@@ -19,6 +16,7 @@ routes.get('/', async(req, res) => {
         .populate({ path: 'banner', visible: { $ne: true } })
         return res.json(homeConfig)
     }catch(err){
+        return res.json(err)
         
     }
     
@@ -54,6 +52,7 @@ routes.post('/', async(req, res) => {
         return res.json(homeConfig)
     }catch(err){
         console.log(err)
+        return res.json(err)
     }
     
 })
