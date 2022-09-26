@@ -12,8 +12,8 @@ routes.get('/', async(req, res) => {
     try{
 
         const homeConfig = await homeModel.findOne()
-        .populate({ path: 'highlights', visible: { $ne: true } })
-        .populate({ path: 'banner', visible: { $ne: true } })
+        // .populate({ path: 'highlights', visible: { $ne: true } })
+        // .populate({ path: 'banner', visible: { $ne: true } })
         return res.json(homeConfig)
     }catch(err){
         return res.json(err)
@@ -22,53 +22,78 @@ routes.get('/', async(req, res) => {
     
 })
 
-routes.post('/', async(req, res) => {
-    try{
+// routes.post('/', async(req, res) => {
+//     try{
         
-    const homeConfig = await homeModel.create({
-        banner: [
-            '62cf39b8a51af7c2078d5503',
-            '62d3773cf18362464ae2aa04',
-            '62df5cc54414523971e9f3e1'
-        ],
-        morePosts: [
-            '62cf39b8a51af7c2078d5503',
-            '62d3773cf18362464ae2aa04',
-            '62df5cc54414523971e9f3e1'
-        ],
-        highlights: [
-            '62cf39b8a51af7c2078d5503',
-            '62d3773cf18362464ae2aa04',
-            '62df5cc54414523971e9f3e1'
-        ]
-    })
+//     const homeConfig = await homeModel.create({
+//         banner: [
+//             '62cf39b8a51af7c2078d5503',
+//             '62d3773cf18362464ae2aa04',
+//             '62df5cc54414523971e9f3e1'
+//         ],
+//         morePosts: [
+//             '62cf39b8a51af7c2078d5503',
+//             '62d3773cf18362464ae2aa04',
+//             '62df5cc54414523971e9f3e1'
+//         ],
+//         highlights: [
+//             '62cf39b8a51af7c2078d5503',
+//             '62d3773cf18362464ae2aa04',
+//             '62df5cc54414523971e9f3e1'
+//         ]
+//     })
 
-    await homeConfig
-    .populate({ path: 'highlights', visible: { $ne: true } })
-    .populate({ path: 'banner', visible: { $ne: true } })
+//     await homeConfig
+//     .populate({ path: 'highlights', visible: { $ne: true } })
+//     .populate({ path: 'banner', visible: { $ne: true } })
 
-    console.log(homeConfig)
+//     console.log(homeConfig)
         
-        return res.json(homeConfig)
-    }catch(err){
-        console.log(err)
-        return res.json(err)
-    }
+//         return res.json(homeConfig)
+//     }catch(err){
+//         console.log(err)
+//         return res.json(err)
+//     }
     
-})
+// })
 
-routes.put('/', async(req, res) => {
+routes.put('/add', async(req, res) => {
     try{
         const { banner, morePosts, highlights } = req.body.homeConfig;
 
+        const homeConfig = await homeModel.findOne()
 
+        var newBannerList = homeConfig.banner;
+        var newMorePostsList = homeConfig.morePosts;
+        var newHighlightsList = homeConfig.highlights;
+
+        if(banner && !newBannerList.includes(banner)){
+            newBannerList.push(banner);
+        }else if(banner && newBannerList.includes(banner)){
+            
+            newBannerList = newBannerList.filter(item => item != banner)
+        }
+
+        if(morePosts && !newMorePostsList.includes(morePosts)){
+            newMorePostsList.push(morePosts);
+        }else if(morePosts && newMorePostsList.includes(morePosts)){
+            
+            newMorePostsList = newMorePostsList.filter(item => item != morePosts)
+        }
+
+        if(highlights && !newHighlightsList.includes(highlights)){
+            newHighlightsList.push(highlights);
+        }else if(highlights && newHighlightsList.includes(highlights)){
+            
+            newHighlightsList = newHighlightsList.filter(item => item != highlights)
+        }
         
         const updatedHomePage = await homeModel.findByIdAndUpdate(
-            _id,
+            homeConfig._id,
             {
-                banner,
-                morePosts,
-                highlights,
+                banner: newBannerList,
+                morePosts: newMorePostsList,
+                highlights, newHighlightsList,
             },
             {new:true}
         );
