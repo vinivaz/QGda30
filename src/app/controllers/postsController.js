@@ -96,7 +96,7 @@ routes.post('/', async(req, res) => {
         //console.log(post)
 
         const slug = slugify(post.title, {
-            remove: /[*+~.,()'"!:@]/g,
+            remove: /[*+~.,()&'"!:@]/g,
             lower: true,
         })
 
