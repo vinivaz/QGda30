@@ -135,7 +135,7 @@ routes.put('/', async(req, res) => {
         const { _id, title, author, blocks, visible } = req.body.post;
 
         const slug = slugify(title, {
-            remove: /[*+~.,()'"!:@]/g,
+            remove: /[*+~.,()&'"!:@]/g,
             lower: true,
         })
 
