@@ -28,7 +28,7 @@
                   <a class="banner" href="https://qgda30.herokuapp.com/<%=post.slug%>">
                     <img src="<%=post.img%>">
                     <div class="foundation">
-                      <p class="title"><%=post.title%></p>
+                      <p class="title"><%-post.title%></p>
                     </div>
 
                   </a>     
@@ -37,7 +37,7 @@
               <a class="banner" href="https://qgda30.herokuapp.com/<%=post.slug%>">
                 <img src="<%=post.img%>">
                 <div class="foundation">
-                  <p class="title"><%=post.title%></p>
+                  <p class="title"><%-post.title%></p>
                 </div>
               </a>
             <% }
@@ -56,7 +56,7 @@
                         </div>
                       </div>
                       <div class="data">
-                        <div class="title"><p><%=post.title%></p></div>
+                        <div class="title"><p><%-post.title%></p></div>
                       </div>
                     </div>
                   </div>
@@ -70,7 +70,7 @@
                       </div>
                     </div>
                     <div class="data">
-                      <div class="title"><p><%=post.title%></p></div>
+                      <div class="title"><p><%-post.title%></p></div>
                     </div>
                   </div>
                 </div>
@@ -85,7 +85,7 @@
                     <a class="post" href="https://qgda30.herokuapp.com/<%=post.slug%>">
                       <div class="cover"><img src="<%=post.img%>"></div>
                       <div class="content">
-                        <h3><%=post.title%></h3>
+                        <h3><%-post.title%></h3>
                         <div class="date"><%=post.date%></div>
                         <div class="brief-content"><p><%=post.briefContent%></p></div>
                       </div>
