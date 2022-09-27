@@ -64,9 +64,10 @@ routes.put('/', async(req, res) => {
             {new:true}
         );
 
-        await updatedHomePage
-            .populate({ path: 'highlights', visible: { $ne: true } })
-            .populate({ path: 'banner', visible: { $ne: true } })
+        // await updatedHomePage
+        //     .populate({ path: 'highlights', visible: { $ne: true } })
+        //     .populate({ path: 'banner', visible: { $ne: true } })
+        //     .populate({ path: 'morePosts', visible: { $ne: true } })
         
     
         console.log(updatedHomePage)
