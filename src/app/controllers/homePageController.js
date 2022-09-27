@@ -57,7 +57,7 @@ routes.get('/', async(req, res) => {
     
 // })
 
-routes.put('/add', async(req, res) => {
+routes.put('/', async(req, res) => {
     try{
         const { banner, morePosts, highlights } = req.body.homeConfig;
 
