@@ -108,6 +108,7 @@ routes.put('/', async(req, res) => {
         return res.json(updatedHomePage)
     }catch(err){
         console.log(err)
+        return res.json({err: err})
     }
     
 })
