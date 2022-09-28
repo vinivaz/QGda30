@@ -12,8 +12,9 @@ routes.get('/', async(req, res) => {
     try{
 
         const homeConfig = await homeModel.findOne()
-        // .populate({ path: 'highlights', visible: { $ne: true } })
-        // .populate({ path: 'banner', visible: { $ne: true } })
+            .populate({ path: 'highlights', visible: { $ne: true } })
+            .populate({ path: 'banner', visible: { $ne: true } })
+            .populate({ path: 'morePosts', visible: { $ne: true } })
         return res.json(homeConfig)
     }catch(err){
         return res.json(err)
@@ -34,9 +35,13 @@ routes.put('/', async(req, res) => {
         var newHighlightsList = homeConfig.highlights;
 
         if(banner && !newBannerList.includes(banner)){
+            if(newBannerList.length == 7){
+                newBannerList = newBannerList.filter(item => item != newBannerList[6])
+            }
             newBannerList.push(banner);
+
         }else if(banner && newBannerList.includes(banner)){
-            
+           
             newBannerList = newBannerList.filter(item => item != banner)
         }
 

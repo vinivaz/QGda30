@@ -4,6 +4,7 @@ const ownerController = require('./app/controllers/ownerController');
 const authConfig = require('./app/middlewares/auth');
 const postsModel = require('./app/models/posts')
 const adModel = require('./app/models/ad.js')
+const homeModel = require('../models/home')
 
 function getFirstImg(post){
   for(var i = 0; i < post.blocks.length; i++){
@@ -28,6 +29,11 @@ routes
       const posts = await postsModel.find({visible: true})
       .populate('author', ['name','profile_img'])
 
+        const homeConfig = await homeModel.findOne()
+        .populate({ path: 'highlights', visible: { $ne: true } })
+        .populate({ path: 'banner', visible: { $ne: true } })
+        .populate({ path: 'morePosts', visible: { $ne: true } })
+
       posts.map(p => {
         var newDate = new Date(p.createdAt)
 
@@ -41,7 +47,13 @@ routes
 
       const ads = await adModel.find({visible: true})
 
-      return res.render('home.html', { posts, ads})
+      return res.render('home.html', {
+        banner: homeConfig.banner,
+        highlight: homeConfig.highlight,
+        morePosts: homeConfig.morePosts,
+        posts,
+        ads
+      })
     } catch (err) {
       
     }
