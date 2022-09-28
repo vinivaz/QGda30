@@ -4,7 +4,7 @@ const ownerController = require('./app/controllers/ownerController');
 const authConfig = require('./app/middlewares/auth');
 const postsModel = require('./app/models/posts')
 const adModel = require('./app/models/ad.js')
-const homeModel = require('../models/home')
+const homeModel = require('./app/models/home')
 
 function getFirstImg(post){
   for(var i = 0; i < post.blocks.length; i++){
