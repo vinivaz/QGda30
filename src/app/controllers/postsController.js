@@ -3,6 +3,7 @@ const path = require('path')
 const fs = require('fs')
 const slugify = require('slugify')
 const postsModel = require('../models/posts')
+const homeModel = require('../models/home')
 const imgHandler = require('../middlewares/multer');
 
 const authConfig = require('../middlewares/auth');
@@ -149,6 +150,39 @@ routes.put('/', async(req, res) => {
         //     slug: post.slug
         // }
 
+        if(visible == false){
+            var homeConfig = await homeModel.findOne()
+
+            var {highlights, banner, morePosts} = homeConfig
+
+            if(highlights.includes(_id)){
+                highlights = highlights.filter(id => id != _id)
+            }
+
+            if(banner.includes(_id)){
+                banner = banner.filter(id => id != _id)
+            }
+
+            if(morePosts.includes(_id)){
+                morePosts = morePosts.filter(id => id != _id)
+            }
+
+            if(homeConfig.highlights != highlights || homeConfig.banner != banner || homeConfig.morePosts != morePosts){
+                await homeModel.findByIdAndUpdate(
+                    homeConfig._id,
+                    {
+                        banner,
+                        morePosts,
+                        highlights,
+                    },
+                    {new:true}
+                );
+            }
+
+
+
+        }
+
         const checkForSlug = await postsModel.findOne({slug})
         
         if(checkForSlug && checkForSlug._id != _id){
@@ -188,9 +222,40 @@ routes.put('/', async(req, res) => {
 routes.delete('/:postId', async(req, res) => {
     try{
         const { postId } = req.params;
+
+
         
         
         const deletedPost = await postsModel.findByIdAndDelete(postId);
+
+        var homeConfig = await homeModel.findOne()
+
+            var {highlights, banner, morePosts} = homeConfig
+
+            if(highlights.includes(postId)){
+                highlights = highlights.filter(id => id != postId)
+            }
+
+            if(banner.includes(postId)){
+                banner = banner.filter(id => id != postId)
+            }
+
+            if(morePosts.includes(postId)){
+                morePosts = morePosts.filter(id => id != postId)
+            }
+
+            if(homeConfig.highlights != highlights || homeConfig.banner != banner || homeConfig.morePosts != morePosts){
+                await homeModel.findByIdAndUpdate(
+                    homeConfig.postId,
+                    {
+                        banner,
+                        morePosts,
+                        highlights,
+                    },
+                    {new:true}
+                );
+            }
+
         console.log(deletedPost)
         
         return res.json({response: "Post has been deleted", deletedPost})

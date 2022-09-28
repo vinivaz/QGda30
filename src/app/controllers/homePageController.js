@@ -12,9 +12,9 @@ routes.get('/', async(req, res) => {
     try{
 
         const homeConfig = await homeModel.findOne()
-            .populate({ path: 'highlights', visible: { $ne: true } })
-            .populate({ path: 'banner', visible: { $ne: true } })
-            .populate({ path: 'morePosts', visible: { $ne: true } })
+        //     .populate({ path: 'highlights', visible: { $ne: true } })
+        //     .populate({ path: 'banner', visible: { $ne: true } })
+        //     .populate({ path: 'morePosts', visible: { $ne: true } })
         return res.json(homeConfig)
     }catch(err){
         return res.json(err)
