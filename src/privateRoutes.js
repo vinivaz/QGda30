@@ -20,7 +20,6 @@ routes
   .get('/login', (req, res) =>{
     return res.render('login.html')
   })
-  
 
   .get('/studio', setView, (req, res) =>{
     return res.render('studio.html')
