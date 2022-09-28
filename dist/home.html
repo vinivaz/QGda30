@@ -21,9 +21,9 @@
         </nav>
         <div class="main">
           <div id="sync1" class="owl-carousel owl-theme">
-          <% posts.forEach(function(post, i){
-            if(posts.length > 4){
-              if(i < 4){ %>
+          <% banner.forEach(function(post, i){
+       
+               %>
                   <a class="banner" href="https://qgda30.herokuapp.com/<%=post.slug%>">
                     <img src="<%=post.img%>">
                     <div class="foundation">
@@ -31,22 +31,13 @@
                     </div>
 
                   </a>     
-            <%}
-            }else{ %>
-              <a class="banner" href="https://qgda30.herokuapp.com/<%=post.slug%>">
-                <img src="<%=post.img%>">
-                <div class="foundation">
-                  <p class="title"><%-post.title%></p>
-                </div>
-              </a>
-            <% }
+            <%
           }) %>
           </div>
 
           <div id="sync2" class="owl-carousel owl-theme">
-            <% posts.forEach(function(post, i){
-              if(posts.length > 4){
-                if(i < 4){ %>
+            <% banner.forEach(function(post, i){
+              %>
                   <div class="item">
                     <div class="post">
                       <div class="cover">
@@ -59,21 +50,7 @@
                       </div>
                     </div>
                   </div>
-                <%}
-              }else{ %>
-                <div class="item">
-                  <div class="post">
-                    <div class="cover">
-                      <div class="cover-place">
-                        <img src="<%=post.img%>">
-                      </div>
-                    </div>
-                    <div class="data">
-                      <div class="title"><p><%-post.title%></p></div>
-                    </div>
-                  </div>
-                </div>
-            <%}})%>
+                <%})%>
           </div>
           <div class="more-content">
             <div class="more-posts">
