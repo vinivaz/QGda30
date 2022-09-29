@@ -53,6 +53,9 @@ routes.put('/', async(req, res) => {
         }
 
         if(highlights && !newHighlightsList.includes(highlights)){
+            if(newHighlightsList.length == 5){
+                newHighlightsList = newHighlightsList.filter(item => item != newHighlightsList[4])
+            }
             newHighlightsList.push(highlights);
         }else if(highlights && newHighlightsList.includes(highlights)){
             
