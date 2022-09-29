@@ -49,7 +49,7 @@ routes
 
       return res.render('home.html', {
         banner: homeConfig.banner,
-        highlight: homeConfig.highlight,
+        highlights: homeConfig.highlight,
         morePosts: homeConfig.morePosts,
         posts,
         ads
