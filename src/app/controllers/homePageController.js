@@ -64,7 +64,7 @@ routes.put('/', async(req, res) => {
             {
                 banner: newBannerList,
                 morePosts: newMorePostsList,
-                highlights, newHighlightsList,
+                highlights: newHighlightsList,
             },
             {new:true}
         );
