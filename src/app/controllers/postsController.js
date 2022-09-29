@@ -142,14 +142,6 @@ routes.put('/', async(req, res) => {
 
         console.log(title, slug)
 
-        // const newPost = {
-        //     title: post.title,
-        //     author: post.author,
-        //     blocks: post.blocks,
-        //     visible: post.visible,
-        //     slug: post.slug
-        // }
-
         if(visible == false){
             var homeConfig = await homeModel.findOne()
 
