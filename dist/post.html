@@ -137,13 +137,13 @@
           <% posts.forEach(function(postItem, i){ %>
             <%if(postItem.id !== post.id){ 
               if(posts[0].id != post.id){%>
-                <a class="post-item <%=i == 0? "open" : ""%>" title="<%=postItem.title%>" href="https://qgda30.herokuapp.com/<%=postItem.slug%>">
+                <a class="post-item <%=i == 0? "open" : ""%>" title="<%-postItem.title%>" href="https://qgda30.herokuapp.com/<%=postItem.slug%>">
                   <div class="post-content">
                     <div class="img-place">
                         <img class="post-img" src="<%=postItem.img%>">
                     </div>
                     <div class="post-data">
-                        <span class="post-title"><%=postItem.title%></span>
+                        <span class="post-title"><%-postItem.title%></span>
                         <div class="post-details">
                             <span class="post-author"><%=postItem.author.name%></span>
                             <span class="post-date"><%=postItem.date%></span>
