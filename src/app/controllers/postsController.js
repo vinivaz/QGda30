@@ -21,7 +21,15 @@ function getFirstImg(post){
 function getInicialTxt(post){
     for(var i = 0; i < post.blocks.length; i++){
       if(post.blocks[i].type == 'text'){
-        return post.blocks[i].content.replace(/<[^>]*>/g, '');
+          var plainTxt = post.blocks[i].content.replace(/<[^>]*>/g, '');
+
+          if(plainTxt.length > 120){
+
+            plainTxt = plainTxt.slice(0, -(plainTxt.length - 120)) + "..."
+            
+          }
+
+        return plainTxt;
       }
     }
   }

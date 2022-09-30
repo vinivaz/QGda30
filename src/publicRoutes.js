@@ -41,7 +41,7 @@ routes
 
         p.date = `${newDate.getDate()}/${(newDate.getMonth() + 1)}/${newDate.getFullYear()}`
 
-        p.briefContent = getInicialTxt(p)
+        // p.briefContent = getInicialTxt(p)
 
       })
 
@@ -80,7 +80,7 @@ routes
 
         p.date = `${newDate.getDate()}/${(newDate.getMonth() + 1)}/${newDate.getFullYear()}`
 
-        p.briefContent = getInicialTxt(p)
+        // p.briefContent = getInicialTxt(p)
 
       })
 
