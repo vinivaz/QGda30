@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>QGda30</title>
-<script defer="defer" src="home.d6588dca03c1121c2a24.bundle.js"></script><link href="home.4b9f2dcdb8a1236d68ad.css" rel="stylesheet"></head>
+<script defer="defer" src="home.d6588dca03c1121c2a24.bundle.js"></script><link href="home.854cca7fcfdb890bdd42.css" rel="stylesheet"></head>
 <body>
     <div id="webSiteContent">
         <nav class="nav-bar">
@@ -57,13 +57,13 @@
               <h3>Publicações</h3>
               <div class="posts">
                 <% morePosts.forEach(function(post, i){
-                  if(i < 8){ %>
+                  if(i < 3){ %>
                     <a class="post" href="https://qgda30.herokuapp.com/<%=post.slug%>">
                       <div class="cover"><img src="<%=post.img%>"></div>
                       <div class="content">
                         <h3><%-post.title%></h3>
                         <div class="date"><%=post.date%></div>
-                        <div class="brief-content"><p><%=post.briefContent%></p></div>
+                        <div class="brief-content"><p><%-post.briefContent%></p></div>
                       </div>
                     </a>
                   <%}
@@ -99,6 +99,20 @@
                 <%
               })%>
             </div>
+          </div>
+          <div class="posts">
+            <% morePosts.forEach(function(post, i){
+              if(i > 3 && i < 7){ %>
+                <a class="post" href="https://qgda30.herokuapp.com/<%=post.slug%>">
+                  <div class="cover"><img src="<%=post.img%>"></div>
+                  <div class="content">
+                    <h3><%-post.title%></h3>
+                    <div class="date"><%=post.date%></div>
+                    <div class="brief-content"><p><%-post.briefContent%></p></div>
+                  </div>
+                </a>
+              <%}
+            })%>
           </div>
         </div>
 
