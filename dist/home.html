@@ -100,19 +100,24 @@
               })%>
             </div>
           </div>
-          <div class="posts">
-            <% morePosts.forEach(function(post, i){
-              if(i > 3 && i < 7){ %>
-                <a class="post" href="https://qgda30.herokuapp.com/<%=post.slug%>">
-                  <div class="cover"><img src="<%=post.img%>"></div>
-                  <div class="content">
-                    <h3><%-post.title%></h3>
-                    <div class="date"><%=post.date%></div>
-                    <div class="brief-content"><p><%-post.briefContent%></p></div>
-                  </div>
-                </a>
-              <%}
-            })%>
+
+          <div class="more-content">
+            <div class="more-posts">
+              <div class="posts">
+                <% morePosts.forEach(function(post, i){
+                  if(i >= 3 && i < 7){ %>
+                    <a class="post" href="https://qgda30.herokuapp.com/<%=post.slug%>">
+                      <div class="cover"><img src="<%=post.img%>"></div>
+                      <div class="content">
+                        <h3><%-post.title%></h3>
+                        <div class="date"><%=post.date%></div>
+                        <div class="brief-content"><p><%-post.briefContent%></p></div>
+                      </div>
+                    </a>
+                  <%}
+                })%>
+              </div>
+            </div>
           </div>
         </div>
 
