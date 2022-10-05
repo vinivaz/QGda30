@@ -133,44 +133,42 @@
           <button class="prev">&lt;</button>
           <button class="next">&gt;</button>
         </div>
-        <div class="post-list">
+        <div class="posts">
           <% posts.forEach(function(postItem, i){ %>
             <%if(postItem.id !== post.id){ 
               if(posts[0].id != post.id){%>
-                <a class="post <%=i == 0? "open" : ""%>" href="https://qgda30.herokuapp.com/<%=post.slug%>">
-                  <div class="cover">
-                      <div class="inside-cover">
-                        <div class="img" style="background-image: url(<%=post.img%>)"></div>
-                      </div>
-                  </div>
-                  <div class="content">
-                    <div class="post-data">
-                      <h2><%-post.title%></h2>
-                      <span></span>
+                <a class="post-item <%=i == 0? "open" : ""%>" title="<%-postItem.title%>" href="https://qgda30.herokuapp.com/<%=postItem.slug%>">
+                  <div class="post-content">
+                    <div class="img-place">
+                        <img class="post-img" src="<%=postItem.img%>">
                     </div>
-                    <div class="brief-content">
-                      <p>
-                        <%-post.briefContent%>
-                      </p>
+                    <div class="post-data">
+                        <span class="post-title"><%-postItem.title%></span>
+                        <div class="post-details">
+                            <span class="post-author"><%=postItem.author.name%></span>
+                            <span class="post-date"><%=postItem.date%></span>
+                        </div>
+                        <span class="brief-content">
+                          <%-postItem.briefContent%>
+                        </span>
                     </div>
                   </div>
                 </a>
               <%}else{%>
-                <a class="post <%=i == 1? "open" : ""%>" href="https://qgda30.herokuapp.com/<%=post.slug%>">
-                  <div class="cover">
-                      <div class="inside-cover">
-                        <div class="img" style="background-image: url(<%=post.img%>)"></div>
-                      </div>
-                  </div>
-                  <div class="content">
-                    <div class="post-data">
-                      <h2><%-post.title%></h2>
-                      <span></span>
+                <a class="post-item <%=i == 1? "open" : ""%>" title="<%=postItem.title%>" href="https://qgda30.herokuapp.com/<%=postItem.slug%>">
+                  <div class="post-content">
+                    <div class="img-place">
+                        <img class="post-img" src="<%=postItem.img%>">
                     </div>
-                    <div class="brief-content">
-                      <p>
-                        <%-post.briefContent%>
-                      </p>
+                    <div class="post-data">
+                        <span class="post-title"><%=postItem.title%></span>
+                        <div class="post-details">
+                            <span class="post-author"><%=postItem.author.name%></span>
+                            <span class="post-date"><%=postItem.date%></span>
+                        </div>
+                        <div class="brief-content">
+                          <%-postItem.briefContent%>
+                        </div>
                     </div>
                   </div>
                 </a>
