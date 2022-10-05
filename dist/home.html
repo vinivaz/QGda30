@@ -12,7 +12,6 @@
     <div id="webSiteContent">
         <nav class="nav-bar">
             <a href="https://qgda30.herokuapp.com/home" class="logo">
-                
                 <img src="https://i.ibb.co/ZLh3w4c/54695-C6-C-A1-AA-4375-9-D90-44-F9-B53-D459-B.png" alt="54695-C6-C-A1-AA-4375-9-D90-44-F9-B53-D459-B" border="0">
             </a>
             <div class="navigation-opts">
@@ -20,38 +19,7 @@
             </div>
         </nav>
         <div class="main">
-          <div id="sync1" class="owl-carousel owl-theme">
-          <% banner.forEach(function(post, i){
-       
-               %>
-                  <a class="banner" href="https://qgda30.herokuapp.com/<%=post.slug%>">
-                    <img src="<%=post.img%>">
-                    <div class="foundation">
-                      <p class="title"><%-post.title%></p>
-                    </div>
-
-                  </a>     
-            <%
-          }) %>
-          </div>
-
-          <div id="sync2" class="owl-carousel owl-theme">
-            <% banner.forEach(function(post, i){
-              %>
-                  <div class="item">
-                    <div class="post">
-                      <div class="cover">
-                        <div class="cover-place">
-                          <img src="<%=post.img%>">
-                        </div>
-                      </div>
-                      <div class="data">
-                        <div class="title"><p><%-post.title%></p></div>
-                      </div>
-                    </div>
-                  </div>
-                <%})%>
-          </div>
+          
           <div class="more-content">
             <div class="more-posts">
               <h3>Publicações</h3>
@@ -72,7 +40,7 @@
             </div>
             <div class="side-content">
               <div class="sqr-ads-container">
-                
+
                 <div class="ads">
                   <% ads.forEach(function(adItem, i){
                     if(adItem.squarePicture.url != ""){%>
@@ -124,7 +92,6 @@
         <footer></footer>
     </div>
 
-    
 </body>
 
 </html>
