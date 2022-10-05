@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>QGda30</title>
-<script defer="defer" src="home.d6588dca03c1121c2a24.bundle.js"></script><link href="home.3c7c7ef9359eab8a3d4a.css" rel="stylesheet"></head>
+<script defer="defer" src="home.d6588dca03c1121c2a24.bundle.js"></script><link href="home.4022d0fcf3c69b21e55e.css" rel="stylesheet"></head>
 <body>
     <div id="webSiteContent">
         <nav class="nav-bar">
@@ -19,74 +19,31 @@
             </div>
         </nav>
         <div class="main">
-          
-          <div class="more-content">
-            <div class="more-posts">
-              <h3>Publicações</h3>
-              <div class="posts">
-                <% morePosts.forEach(function(post, i){
-                  if(i < 3){ %>
-                    <a class="post" href="https://qgda30.herokuapp.com/<%=post.slug%>">
-                      <div class="cover"><img src="<%=post.img%>"></div>
-                      <div class="content">
-                        <h3><%-post.title%></h3>
-                        <div class="date"><%=post.date%></div>
-                        <div class="brief-content"><p><%-post.briefContent%></p></div>
-                      </div>
-                    </a>
-                  <%}
-                })%>
-              </div>
-            </div>
-            <div class="side-content">
-              <div class="sqr-ads-container">
-
-                <div class="ads">
-                  <% ads.forEach(function(adItem, i){
-                    if(adItem.squarePicture.url != ""){%>
-                      <a href="<%=adItem.link%>" class="ad <%=i == 0? "current" : ""%>">
-                        <img src="<%=adItem.squarePicture.url%>">
-                      </a>
-                    <%}
-                  })%>
+          <div class="post-list">
+            <% morePosts.forEach(function(post, i){
+              if(i < 3){ %>
+              <div class="post">
+                <div class="cover">
+                    <div class="inside-cover">
+                      <div class="img" style="background-image: url(<%=post.img%>)"></div>
+                    </div>
+                </div>
+                <div class="content">
+                  <div class="post-data">
+                    <h2><%-post.title%></h2>
+                    <span></span>
+                  </div>
+                  <div class="brief-content">
+                    <p>
+                      <%-post.briefContent%>
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+              <%}
+            })%>  
           </div>
-          <div class="black-theme">
-            <div class="posts">
-              <% highlights.forEach(function(post, i){%>
-                <a class="post" href="https://qgda30.herokuapp.com/<%=post.slug%>">
-                  <div class="cover"><img src="<%=post.img%>"></div>
-                  <div class="content">
-                    <h3><%-post.title%></h3>
-                    <div class="date"><%=post.date%></div>
-    
-                  </div>
-                </a>
-                <%
-              })%>
-            </div>
-          </div>
-
-          <div class="more-content">
-            <div class="more-posts">
-              <div class="posts">
-                <% morePosts.forEach(function(post, i){
-                  if(i >= 3 && i < 7){ %>
-                    <a class="post" href="https://qgda30.herokuapp.com/<%=post.slug%>">
-                      <div class="cover"><img src="<%=post.img%>"></div>
-                      <div class="content">
-                        <h3><%-post.title%></h3>
-                        <div class="date"><%=post.date%></div>
-                        <div class="brief-content"><p><%-post.briefContent%></p></div>
-                      </div>
-                    </a>
-                  <%}
-                })%>
-              </div>
-            </div>
-          </div>
+          
         </div>
 
         <footer></footer>
