@@ -126,6 +126,7 @@ routes.post('/', async(req, res) => {
             blocks: post.blocks,
             slug: post.slug,
             visible: post.visible,
+            category: post.category,
             img,
             briefContent 
         })
@@ -141,7 +142,7 @@ routes.post('/', async(req, res) => {
 
 routes.put('/', async(req, res) => {
     try{
-        const { _id, title, author, blocks, visible } = req.body.post;
+        const { _id, title, author, blocks, visible, category } = req.body.post;
 
         const slug = slugify(title, {
             remove: /[*+~.,()&'"!:@]/g,
@@ -201,6 +202,7 @@ routes.put('/', async(req, res) => {
                 blocks,
                 slug,
                 visible,
+                category,
                 img,
                 briefContent
             },
