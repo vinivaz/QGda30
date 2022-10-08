@@ -70,14 +70,14 @@
                   <img src="<%=block.url%>">
                   <div class="img-details">
                     <%=block.description? 
-                      `<div class="description">
-                        <span><%-block.description%></div>`
+                      <div class="description">
+                        <span><%-block.description%></div>
                     :
                       ''
                     %>
-                    <%block.credits?
-                      `<div class="link">
-                        <a href="${block.credits.link}" target="_blank" rel="noopener noreferrer"><%-block.credits.content%></div>`
+                    <%=block.credits?
+                      <div class="link">
+                        <a href="<%=block.credits.link%>" target="_blank" rel="noopener noreferrer"><%-block.credits.content%></div>
                     :
                       ''
                     %>
