@@ -69,16 +69,18 @@
                 <div class="block img">
                   <img src="<%=block.url%>">
                   <div class="img-details">
-                    <%=block.description? 
+                    <%=block.description?%>
                       <div class="description">
-                        <span><%-block.description%></div>
-                    :
+                        <span><%-block.description%></span>
+                      </div>
+                    <%:
                       ''
                     %>
-                    <%=block.credits?
+                    <%=block.credits?%>
                       <div class="link">
-                        <a href="<%=block.credits.link%>" target="_blank" rel="noopener noreferrer"><%-block.credits.content%></div>
-                    :
+                        <a href="<%=block.credits.link%>" target="_blank" rel="noopener noreferrer"><%-block.credits.content%></a>
+                      </div>
+                    <%:
                       ''
                     %>
                   </div>
@@ -179,9 +181,9 @@
     </div>
 
     
-  
+  </div>
   <footer></footer>
-
+</div>
 
 <script type="text/javascript" id="www-widgetapi-script" src="https://s.ytimg.com/yts/jsbin/www-widgetapi-vflS50iB-/www-widgetapi.js" async=""></script>
 <script src="https://www.youtube.com/player_api"></script>
