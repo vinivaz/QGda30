@@ -69,19 +69,16 @@
                 <div class="block img">
                   <img src="<%=block.url%>">
                   <div class="img-details">
-                    <%=block.description?%>
+                    <%if(block.description){%>
                       <div class="description">
                         <span><%-block.description%></span>
                       </div>
-                    <%:
-                      ''
-                    %>
-                    <%=block.credits?%>
+                    <%}%>
+                    <%if(block.credits){%>
                       <div class="link">
                         <a href="<%=block.credits.link%>" target="_blank" rel="noopener noreferrer"><%-block.credits.content%></a>
                       </div>
-                    <%:
-                      ''
+                    <%}
                     %>
                   </div>
                 </div>
