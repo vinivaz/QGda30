@@ -30,8 +30,6 @@ const postSchema = new mongoose.Schema({
     },
     postedAt: {
         type: Date,
-        default: Date.now()
-
     }
 
 

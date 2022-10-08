@@ -38,7 +38,8 @@ routes.get('/', async(req, res) => {
     try{
         
         const posts = await postsModel.find()
-        .populate('author', ['name','profile_img'],)
+        .populate('author', ['name','profile_img'])
+        .sort({ createdAt: -1 })
         return res.send(posts)
     }catch(err){
         
@@ -50,7 +51,8 @@ routes.get('/drafts', async(req, res) => {
     try{
         
         const posts = await postsModel.find({visible: false})
-        .populate('author', ['name','profile_img'],)
+        .populate('author', ['name','profile_img'])
+        .sort({ createdAt: -1 })
         return res.send(posts)
     }catch(err){
         console.log(err)
@@ -63,7 +65,8 @@ routes.get('/published', async(req, res) => {
     try{
         
         const posts = await postsModel.find({visible: true})
-        .populate('author', ['name','profile_img'],)
+        .populate('author', ['name','profile_img'])
+        .sort({ createdAt: -1 })
         return res.send(posts)
     }catch(err){
         console.log(err)
@@ -140,6 +143,27 @@ routes.post('/', async(req, res) => {
     
 })
 
+routes.put('/first_publish', async(req, res) => {
+
+    try{
+
+        const {_id} = req.body._id
+        const updatedPost = await postsModel.findByIdAndUpdate(
+            _id,
+            {
+
+                visible: true,
+
+                postedAt: Date.now()
+            },
+            {new:true}
+        );
+    }catch(err){
+        console.log(err)
+    }
+    
+})
+
 routes.put('/', async(req, res) => {
     try{
         const { _id, title, author, blocks, visible, category } = req.body.post;
@@ -204,7 +228,8 @@ routes.put('/', async(req, res) => {
                 visible,
                 category,
                 img,
-                briefContent
+                briefContent,
+                postedAt: Date.now()
             },
             {new:true}
         );
