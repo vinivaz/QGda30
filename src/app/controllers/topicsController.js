@@ -64,3 +64,5 @@ routes.delete('/:topic', async(req, res)=>{
     }
 
 })
+
+module.exports = routes;
