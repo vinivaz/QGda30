@@ -4,6 +4,7 @@ const fs = require('fs')
 const slugify = require('slugify')
 const postsModel = require('../models/posts')
 const homeModel = require('../models/home')
+const topicModel = require('../models/topic')
 const imgHandler = require('../middlewares/multer');
 
 const authConfig = require('../middlewares/auth');
@@ -122,6 +123,14 @@ routes.post('/', async(req, res) => {
 
         const img = getFirstImg(post)
         const briefContent = getInicialTxt(post)
+
+        var { topic } = post;
+
+        if(!topic){
+            topic = "NOTÍCIA"
+        }
+
+        const topicList = await topicModel.findOneAndUpdate({name: topic},{name: topic},{new: true, upsert:true})
         
         const newPost = await postsModel.create({
             title: post.title,
@@ -129,7 +138,7 @@ routes.post('/', async(req, res) => {
             blocks: post.blocks,
             slug: post.slug,
             visible: post.visible,
-            category: post.category,
+            topic: topic,
             img,
             briefContent 
         })
@@ -166,7 +175,7 @@ routes.put('/first_publish', async(req, res) => {
 
 routes.put('/', async(req, res) => {
     try{
-        const { _id, title, author, blocks, visible, category } = req.body.post;
+        const { _id, title, author, blocks, visible, topic, postedAt } = req.body.post;
 
         const slug = slugify(title, {
             remove: /[*+~.,()&'"!:@]/g,
@@ -217,22 +226,46 @@ routes.put('/', async(req, res) => {
         
         const img = getFirstImg(req.body.post)
         const briefContent = getInicialTxt(req.body.post)
-        
-        const updatedPost = await postsModel.findByIdAndUpdate(
-            _id,
-            {
+
+        var topicList;
+
+        if(topic){
+            topicList = await topicModel.findOneAndUpdate({name: topic},{name: topic},{new: true, upsert:true})
+        }
+
+        var postOpts;
+
+        if(visible == true && !postedAt){
+            postOpts = {
                 title,
                 author: req.userId,
                 blocks,
                 slug,
                 visible,
-                category,
+                topic,
                 img,
                 briefContent,
                 postedAt: Date.now()
-            },
+            }
+        }else{
+            postOpts = {
+                title,
+                author: req.userId,
+                blocks,
+                slug,
+                visible,
+                topic,
+                img,
+                briefContent
+            }
+        }
+        
+        const updatedPost = await postsModel.findByIdAndUpdate(
+            _id,
+            postOpts,
             {new:true}
         );
+        
 
         await updatedPost.populate('author', ['name','profile_img']);
         

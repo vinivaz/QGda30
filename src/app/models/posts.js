@@ -7,7 +7,7 @@ const postSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'owner',
     },
-    category: String,
+    topic: String,
     img: String,
     blocks: [{
         id: Number,

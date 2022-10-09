@@ -28,6 +28,7 @@ routes
     try {
       const posts = await postsModel.find({visible: true})
       .populate('author', ['name','profile_img'])
+      .sort({postedAt: -1})
 
         const homeConfig = await homeModel.findOne()
         .populate({ path: 'highlights', visible: { $ne: true } })
@@ -68,7 +69,8 @@ routes
 
       const posts = await postsModel.find({visible: true})
       .populate('author', ['name','profile_img'])
-
+      .sort({postedAt: -1})
+      
       const post = posts.filter(post => post.slug == slug)[0]
 
       const ads = await adModel.find({visible: true})

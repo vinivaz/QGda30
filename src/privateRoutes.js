@@ -6,6 +6,7 @@ const authConfig = require('./app/middlewares/auth');
 
 routes
   .use('/posts', require('./app/controllers/postsController'))
+  .use('/topics', require('./app/controllers/topicsController'))
   .use('/home', require('./app/controllers/homePageController'))
   .use('/ads', require('./app/controllers/adsController'))
   .use('/profile', require('./app/controllers/profileController'))
