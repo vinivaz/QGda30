@@ -39,6 +39,10 @@ routes.put('/', async(req, res)=>{
     try{
         const { topic, newTopic } = req.body
 
+        if(topic == 'NOTÍCIA'){
+            res.json({err: 'O tópico "NOTÍCIA" é padrão e não pode ser modificado :('})
+        }
+
         const topicList = await topicModel.findOneAndUpdate({name: topic},{name: newTopic},{new:true})
 
         return res.json(topicList)
@@ -53,6 +57,10 @@ routes.put('/', async(req, res)=>{
 routes.delete('/:topic', async(req, res)=>{
     try{
         const { topic } = req.params;
+
+        if(topic == 'NOTÍCIA'){
+            return res.json({err: 'O tópico "NOTÍCIA" é padrão e não pode ser apagado :('})
+        }
 
         const topicList = await topicModel.findOneAndDelete({name: topic})
 
