@@ -1,6 +1,7 @@
 const routes = require('express').Router();
 
 const topicModel = require('../models/topic')
+const postsModel = require('../models/posts')
 
 const authConfig = require('../middlewares/auth');
 
@@ -63,6 +64,7 @@ routes.delete('/:topic', async(req, res)=>{
         }
 
         const topicList = await topicModel.findOneAndDelete({name: topic})
+        await postsModel.updateMany({topic: topic}, {topic: 'NOTÍCIA'})
 
         return res.json(topicList)
 
