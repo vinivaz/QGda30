@@ -124,10 +124,12 @@ routes.post('/', async(req, res) => {
         const img = getFirstImg(post)
         const briefContent = getInicialTxt(post)
 
-        var { topic } = post;
+        var topic; 
 
-        if(!topic){
+        if(!post.topic){
             topic = "NOTÍCIA"
+        }else{
+            topic = post.topic
         }
 
         const topicList = await topicModel.findOneAndUpdate({name: topic},{name: topic},{new: true, upsert:true})
