@@ -5,9 +5,14 @@ const crypto = require('crypto');
 function imgType(req) {
   if (req.route.path === "/save_image") {
     return path.resolve(__dirname, "..", "..", "..", "tmp", "images")
-  } else {
-    return path.resolve(__dirname, "..", "..", "..", "tmp", "ad")
+  } 
+
+  if(req.route.path == '/edit_profile_pic'){
+    return path.resolve(__dirname, "..", "..", "..", "tmp", "profile")
   }
+  
+  return path.resolve(__dirname, "..", "..", "..", "tmp", "ad")
+
 }
 
 

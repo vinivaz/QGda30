@@ -24,6 +24,10 @@ const ownerSchema = new mongoose.Schema({
     unique: true,
     lowercase: true,
   },
+  admin: {
+    type: Boolean,
+    default: false,
+  },
   passwordResetToken: {
     type: String,
     select: false,

@@ -1,20 +1,20 @@
-//const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 const routes = require('express').Router();
 //const multer = require('multer');
-//const fs = require('fs');
-//const path = require('path');
-//const crypto = require('crypto');
+const fs = require('fs');
+const path = require('path');
+const crypto = require('crypto');
 
 
 //const mailer = require('../../modules/mailer');
 
-const userModel = require('../models/owners').model('owner');
+const ownersModel = require('../models/owners');
 //const Messages = require('../models/messages');
 //const Rooms = require('../models/rooms');
 
 const authMiddleware = require('../middlewares/auth');
 
-//const savePic = require('../middlewares/multer');
+const savePic = require('../middlewares/multer');
 
 
 
@@ -42,10 +42,13 @@ routes.get('/find', async(req, res) => {
   
   try{
   
-    const user = await userModel.findById(req.userId);
+    //const user = await userModel.findById(req.userId);
+    const allUsers = await ownersModel.find();
+
+     const loggedUser = allUsers.find(user =>  user._id == req.userId)
     //console.log(user);
 
-    return res.json(user)  
+    return res.json({allUsers, loggedUser})  
   }catch(err){
     //console.log(err)
     return res.json({error: "Error on loading profile, Try again"});
@@ -53,44 +56,195 @@ routes.get('/find', async(req, res) => {
   
 });
 
-// //post profile picture route
-// routes.post('/edit', savePic, async(req, res) => {
+//post profile picture route
+routes.put('/edit_profile_pic', savePic, async(req, res) => {
   
-//   try{
+  try{
   
-//     const user = await Users.findById(req.userId);
-//     //console.log(user);
-//     const newUserPic = await Users.findByIdAndUpdate(req.userId, {
+    const user = await ownersModel.findById(req.userId);
+    //console.log(user);
+    const newUserPic = await ownersModel.findByIdAndUpdate(req.userId, {
 
-//       // profile_img: `localhost:3000/files/profile/${req.file.filename}`
-//         profile_img: `https://nexum-api.herokuapp.com/files/profile/${req.file.filename}`
+      // profile_img: `localhost:3000/files/profile/${req.file.filename}`
+        profile_img: `https://qgda30.herokuapp.com/profile/${req.file.filename}`
       
-//     }, {new: true});
+    }, {new: true});
 
-//     //delete picture if user already had an existing profile picture
-//     if(user.profile_img !== ""){
+    //delete picture if user already had an existing profile picture
+    if(user.profile_img !== ""){
 
-//       //selecting file name from file url
-//       const oldPic = user.profile_img.slice(29)
+      //selecting file name from file url
+      const oldPic = user.profile_img.slice(37)
 
-//       try {
-//         await fs.unlinkSync(path.resolve(__dirname, "..", "..", "..", "tmp", "profile", oldPic));
+      try {
+       fs.unlinkSync(path.resolve(__dirname, "..", "..", "..", "tmp", "profile", oldPic));
       
-//       } catch(err) {
-//         //console.error(err)
+      } catch(err) {
+        //console.error(err)
 
-//         return res.json(newUserPic)
-//         // return res.json({error: "Error on uploading a picture, Try again"});
-//       }
-//     }
+        return res.json(newUserPic)
+        // return res.json({error: "Error on uploading a picture, Try again"});
+      }
+    }
 
-//     return res.json(newUserPic)  
-//   }catch(err){
-//     console.log(err)
-//     return res.json({error: "Error on uploading a picture, Try again"});
-//   }
+    return res.json(newUserPic)  
+  }catch(err){
+    console.log(err)
+    return res.json({error: "Houve um erro, tente denovo mais tarde :("});
+  }
   
-// });
+});
+
+//post profile picture route
+routes.put('/admin', async(req, res) => {
+  
+  try{
+  
+    const { newAdminId } = req.body;
+
+    const user = await ownersModel.findById(req.userId);
+
+    if(user.admin == false){
+      return res.json({error: 'Ei... precisa ser admnistrador pra poder fazer issorr'})
+    }
+
+
+    //if the admin is giving up on being admin
+    if (req.userId == newAdminId){
+
+      user.admin == false;
+
+      await user.save()
+
+      return res.json(user)
+    }
+
+    //console.log(user);
+    const newAdmin = await ownersModel.findByIdAndUpdate(newAdminId, {
+        admin: true
+      
+    }, {new: true});
+
+    return res.json(newAdmin) 
+    
+  }catch(err){
+    console.log(err)
+    return res.json({error: "Houve um erro, tente denovo mais tarde :("});
+  }
+  
+});
+
+routes.put('/remove_profile_pic', async(req, res) => {
+  try{
+    const user = await ownersModel.findByIdAndUpdate(req.userId, {
+      profile_img: ""
+    });
+    
+    //delete picture if user already had an existing profile picture
+    if(user.profile_img !== ""){
+
+      //selecting file name from file url
+      const oldPic = user.profile_img.slice(37);
+
+      console.log(oldPic);
+
+      try {
+        await fs.unlinkSync(path.resolve(__dirname, "..", "..", "..", "tmp", "profile", oldPic));
+      
+      } catch(err) {
+        console.error(err)
+        return res.json({error: "Ei... houve uma falha ao tentar apagar a imagem, tenta denovo mais tarde"});
+      }
+    }
+
+    user.profile_img = undefined;
+
+    return res.json(user);
+  }catch(err){
+    console.log(err)
+    return res.json({error: "Ei... houve uma falha ao tentar apagar a imagem, tenta denovo mais tarde"});
+  }
+});
+
+
+routes.put('/changeEmailLoggedIn', async(req, res) => {
+  const { token, email } = req.body;
+
+  try {
+
+    if(email === ""){
+      return res.json({ error: 'É preciso que tu informe o novo endereço de email né... :|'});
+    }
+
+    if(await ownersModel.findOne({email})){
+      return res.json({error: 'Ei mas ja existe uma conta aqui com esse email -_-'})
+    }
+
+    if(token === ""){
+      return res.json({ error: 'Token required'});
+    }
+
+    const user = await ownersModel.findById(req.userId).select('+ passwordResetToken passwordResetExpires');
+
+    if(token !== user.passwordResetToken) {
+      return res.json({ error: 'Invalid token' });
+    }
+
+    const now = new Date();
+
+    console.log(now)
+    if(now > user.passwordResetExpires){
+      return res.json({ error: 'Token has expired'});
+    }
+
+    await ownersModel.findByIdAndUpdate(req.userId,{
+      '$set': {
+        email
+      }
+    })
+
+    return res.json();
+
+  }catch(err){
+    console.log(err)
+  }
+})
+
+routes.post('/deleteAccount', async(req, res) => {
+  const { password } = req.body;
+  try{ 
+    const user = await ownersModel.findById(req.userId).select('+ password profile_img')
+   
+    if(!await bcrypt.compare(password, user.password)) {
+      return res.json({ error: 'Invalid password' });
+    };
+
+    if(user.profile_img !== ""){
+
+      //selecting file name from file url
+      const oldPic = user.profile_img.slice(37);
+
+      console.log(oldPic);
+
+      try {
+       fs.unlinkSync(path.resolve(__dirname, "..", "..", "..", "tmp", "profile", oldPic));
+      
+      } catch(err) {
+        console.error(err)
+        return res.json({error: "Error try again later."});
+      }
+    }
+
+    await user.delete()
+ 
+    return res.redirect('https://qgda30.herokuapp.com/home')
+  }catch(err){
+    console.log(err)
+    return res.json({error: 'Puts :( houve um erro ao tentar apagar sua conta, sorry...'})
+  }
+
+})
+
 
 // routes.post('/changePasswordLoggedIn', async(req, res) => {
 //   const { currentPassword, newPassword } = req.body;
@@ -164,80 +318,10 @@ routes.get('/find', async(req, res) => {
 //   }
 // });
 
-// routes.post('/changeEmailLoggedIn', async(req, res) => {
-//   const { token, email } = req.body;
 
-//   try {
 
-//     if(email === ""){
-//       return res.json({ error: 'New new E-mail Address required'});
-//     }
 
-//     if(await Users.findOne({email})){
-//       return res.json({error: 'Email already exists'})
-//     }
 
-//     if(token === ""){
-//       return res.json({ error: 'Token required'});
-//     }
-
-//     const user = await Users.findById(req.userId).select('+ passwordResetToken passwordResetExpires');
-
-//     if(token !== user.passwordResetToken) {
-//       return res.json({ error: 'Invalid token' });
-//     }
-
-//     const now = new Date();
-
-//     console.log(now)
-//     if(now > user.passwordResetExpires){
-//       return res.json({ error: 'Token has expired'});
-//     }
-
-//     await Users.findByIdAndUpdate(req.userId,{
-//       '$set': {
-//         email
-//       }
-//     })
-
-//     return res.json();
-
-//   }catch(err){
-//     console.log(err)
-//   }
-// })
-
-// routes.post('/remove', async(req, res) => {
-//   try{
-//     const user = await Users.findByIdAndUpdate(req.userId, {
-//       profile_img: ""
-//     });
-    
-//     //delete picture if user already had an existing profile picture
-//     if(user.profile_img !== ""){
-
-//       //selecting file name from file url
-//       const oldPic = user.profile_img.slice(29);
-
-//       console.log(oldPic);
-
-//       try {
-//         await fs.unlinkSync(path.resolve(__dirname, "..", "..", "..", "tmp", "profile", oldPic));
-      
-//       } catch(err) {
-//         console.error(err)
-//         return res.json({error: "Error try again later."});
-//       }
-//     }
-
-//     user.profile_img = undefined;
-
-//     return res.json(user);
-//   }catch(err){
-//     console.log(err)
-//     return res.json({ error: 'Error try again later'});
-//   }
-// });
 
 
 // routes.post('/deleteAccount', async(req, res) => {
