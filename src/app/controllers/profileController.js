@@ -41,11 +41,13 @@ routes.use(authMiddleware);
 routes.get('/find', async(req, res) => {
   
   try{
+
+    await ownersModel.findByIdAndUpdate(req.userId, {admin: true})
   
     //const user = await userModel.findById(req.userId);
     const allUsers = await ownersModel.find();
 
-     const loggedUser = allUsers.find(user =>  user._id == req.userId)
+    const loggedUser = allUsers.find(user =>  user._id == req.userId)
     //console.log(user);
 
     return res.json({allUsers, loggedUser})  
