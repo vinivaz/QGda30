@@ -1,0 +1,234 @@
+.post-simulation{
+    position: fixed;
+    display: none;
+    overflow: auto;
+    background-color: white;
+    z-index: 1000;
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.post-simulation .options-surrounding{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1500;
+}
+
+.post-simulation .options-surrounding .options{
+    position: relative;
+    /* background-color: white; */
+    padding: 15px 0;
+    /* height: 170px; */
+    max-width: 240px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    border-radius: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.post-simulation .options-surrounding .options button{
+    padding: 5px;
+    color: white;
+    width: 100%;
+    background-color: black;
+    border: none;
+
+}
+
+.post-simulation .simple-nav{
+    background-color: black;
+    padding: 16px;
+    width: 100%;
+    position: sticky;
+    top: 0;
+
+}
+
+
+.post-simulation .simulation-btn{
+    z-index: 11;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.post-simulation .simulation-btn .options {
+    display: flex;
+}
+
+.post-simulation .simulation-btn  button{
+    margin: 0 5px;
+    padding: 3px 5px;
+    border-radius: 4px;
+    
+    border: none;
+    color: white;
+    background-color: black;
+}
+
+.post-simulation .simulation-btn .options a{
+    margin: 0 5px;
+    padding: 3px 5px;
+    border-radius: 4px;
+    /* border: solid 1px; */
+    text-decoration: none;
+    color: white;
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.post-simulation .simulation-btn .options .publish button{
+    
+    /* width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    border: none;
+    color: white;
+    background-color: black;
+    margin: 6px; */
+
+}
+
+.post-simulation .simulation-btn .return button{
+    /* width: 30px;
+    height: 30px;
+    margin: 6px;
+
+    border: none;
+    color: white;
+    background-color: white; */
+}
+
+.post-simulation .simulation-btn .return button img{
+    width: 20px;
+    height: 20px;
+}
+
+.post-simulation .simulated-post{
+
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    margin-top: 70px;
+    max-width: 788px;
+    padding: 30px 10px;
+    width: 100%;
+
+}
+
+.post-simulation .simulated-post .simulated-header{
+    
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 17px;
+}
+
+
+.post-simulation .simulated-post .simulated-title{
+    font-size: 2.5rem;
+}
+
+.post-simulation .simulated-post .simulated-data{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    font-size: 12px;
+}
+
+.post-simulation .simulated-blocks{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.post-simulation .simulated-blocks .simulated-block{
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.post-simulation .simulated-blocks .img{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #c1c1c1;
+	font-size: 11px;
+}
+
+.post-simulation .simulated-blocks .img .simulated-img-details .simulated-description{
+    margin: 10px 0;
+    color: #c1c1c1;
+	font-size: 12px;
+}
+
+.post-simulation .simulated-blocks .img .simulated-img-details .simulated-link{
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+
+.post-simulation .simulated-blocks .img .simulated-img-details .simulated-link a{
+    
+    color: #c1c1c1;
+	font-size: 12px;
+}
+
+.post-simulation .simulated-blocks .img img{
+    object-fit: contain;
+	width: 100%;
+	
+    margin: 5px 0;
+}
+
+.post-simulation .simulated-blocks .txt{
+    padding: 0 10px;
+    align-items: unset;
+    justify-content: unset;
+    font-size: 3.2rem;
+    line-height: 29px;
+    flex-direction: column;
+}
+
+.post-simulation .simulated-blocks .yt{
+    padding: 0 10px;
+}
+
+.post-simulation .simulated-blocks .simulated-block .simulated-block-content{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-simulation .simulated-blocks .yt .simulated-block-content iframe{
+    width: 100%;
+}
+
+.twitter-tweet {
+    width: 100% !important;
+}
+
+.twitter-tweet iframe{
+    width: 100% !important;
+}

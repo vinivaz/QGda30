@@ -1,0 +1,326 @@
+/* .post{
+    max-width: 198px;
+    margin: 5px;
+
+    border: 0;
+    flex-basis: 33.333%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-direction: column;
+    
+} */
+
+.post{
+    max-width: 520px;
+    margin: 5px 0;
+    flex-basis: unset;
+    width: 100%;
+    border: 0;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-direction: column;
+}
+/* 
+.post .post-content{
+    display: flex;
+    flex-direction: column;
+    column-gap: 10px;
+    height: 100%;
+    border-radius: 7px 7px 0 0;
+    overflow: hidden
+    
+} */
+
+.post .post-content{
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    border-radius: unset;
+    overflow: unset;
+    height: 100%;
+}
+
+/* .post .post-content .post-data{
+    display:flex;
+    flex-direction: column;
+    border: solid 1px #ddd;
+    border-top: none;
+    border-radius: 0 0 7px 7px;
+    padding: 3px 5px;
+    height: 100%;
+} */
+
+.post .post-content .post-data {
+    display: flex;
+    flex-direction: row;
+    border: none;
+    border-top: none;
+    border-radius:none;
+    padding:unset;
+    height: unset;
+}
+
+/* .post .post-content .img-place{
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    max-width: 198px;
+    width: 100%;
+    max-height: 111.38px;
+    height: 100%;
+} */
+
+.post .post-content .img-place{
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    max-width: 198px;
+    width: 100%;
+    max-height: 111.38px;
+    height: 100%;
+}
+
+.post .post-content .no-img{
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    max-width: 198px;
+    width: 198px;
+    height: 111.38px;
+}
+
+/* .post .post-content .no-img{
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    max-width: 198px;
+    width: 198px;
+    height: 111.38px;
+} */
+
+.post .post-content .img-place img{
+    max-width: 211px;
+    width: 100%;
+    object-fit: contain
+}
+
+.post .post-content .post-title{
+    font-family: "Roboto","Arial",sans-serif;
+    font-size: 2.5rem;
+    line-height: 3.5rem;
+    font-weight: 500;
+    max-height: 10rem;
+    overflow: hidden;
+    max-width: 233px;
+    /* width: 100%; */
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+.post .post-content .post-data{
+    display:flex;
+    flex-direction: column;
+}
+
+.post .post-content .post-details{
+    display:flex;
+    flex-direction: column;
+    font-size: 2rem;
+    
+}
+
+.post .post-buttons{
+    display: flex;
+    flex-direction: column;
+    border: none;
+    justify-content: center;
+}
+
+.post .post-buttons button{
+    border: none;
+    background-color: transparent;
+    margin: 5px 0;
+}
+
+.post .post-buttons img{
+    width: 20px;
+    height: 20px;
+    
+    pointer-events: none;
+}
+
+/* .post .post-content .img-place img{
+    max-width: 211px;
+    width: 100%;
+    object-fit: contain
+}
+
+.post .post-content .post-title{
+    font-family: "Roboto","Arial",sans-serif;
+    font-size: 2.5rem;
+    line-height: 3.5rem;
+    font-weight: 500;
+    max-height: 10rem;
+    overflow: hidden;
+    max-width: 208px;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+.post .post-content .post-details{
+    display:flex;
+    flex-direction: column;
+    font-size: 2rem;
+    
+}
+
+.post .post-buttons{
+    display: flex;
+    flex-direction: column;
+    border: none;
+    justify-content: center;
+}
+
+.post .post-buttons button{
+    border: none;
+    background-color: transparent;
+    margin: 5px 0;
+}
+
+.post .post-buttons img{
+    width: 20px;
+    height: 20px;
+    
+    pointer-events: none;
+} */
+
+@media (max-width: 650px) {
+   
+
+    .post{
+        max-width: 520px;
+        margin: 5px 0;
+        flex-basis: unset;
+        width: 100%;
+
+    }
+    
+    .post .post-content{
+        display: flex;
+        flex-direction: row;
+        column-gap: 10px;
+        border-radius: unset;
+        overflow: unset;
+    }
+
+    .post .post-content .post-data {
+        display: flex;
+        flex-direction: unset;
+        border: none;
+        border-top: none;
+        border-radius:none;
+        padding:unset;
+        height: unset;
+    }
+    
+    .post .post-content .img-place{
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        max-width: 198px;
+        width: 100%;
+        max-height: 111.38px;
+        height: 100%;
+    }
+    /* .posts .post .post-content  img{
+        max-width: 200px;
+        width: 100%;
+        object-fit: contain;
+        
+    } */
+    
+    .post .post-content .no-img{
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        max-width: 198px;
+        width: 198px;
+        height: 111.38px;
+    }
+    
+    .post .post-content .img-place img{
+        max-width: 211px;
+        width: 100%;
+        object-fit: contain
+    }
+    
+    .post .post-content .post-title{
+        font-family: "Roboto","Arial",sans-serif;
+        font-size: 2.5rem;
+        line-height: 3.5rem;
+        font-weight: 500;
+        max-height: 10rem;
+        overflow: hidden;
+        max-width: 233px;
+        /* width: 100%; */
+        text-overflow: ellipsis;
+        white-space: normal;
+    }
+    
+    .post .post-content .post-data{
+        display:flex;
+        flex-direction: column;
+    }
+    
+    .post .post-content .post-details{
+        display:flex;
+        flex-direction: column;
+        font-size: 2rem;
+        
+    }
+    
+    .post .post-buttons{
+        display: flex;
+        flex-direction: column;
+        border: none;
+        justify-content: center;
+    }
+    
+    .post .post-buttons button{
+        border: none;
+        background-color: transparent;
+        margin: 5px 0;
+    }
+    
+    .post .post-buttons img{
+        width: 20px;
+        height: 20px;
+        
+        pointer-events: none;
+    }
+}
+
+@media (max-width: 366px) {
+    
+    .post .post-content .img-place {
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        max-width: 160px;
+        /* width: 97%; */
+        max-height: 89.44px;
+        height: 100%;
+        flex-shrink: 0;
+    }
+
+    .post .post-content .post-title{
+        
+        font-size: 2.2rem;
+        line-height: 3rem;
+        font-weight: 500;
+        max-height: 9rem;
+
+      
+    }
+}
+

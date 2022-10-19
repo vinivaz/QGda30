@@ -1,0 +1,270 @@
+#content{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    overflow: hidden;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
+    /* margin-top: 88px; */
+    background-color: #f5f3f3;
+}
+
+.main .content-options{
+    display: block;
+    z-index: 2;
+    padding: 10px 10px 0;
+}
+
+
+#content .controls {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+#content .controls .add-features{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+}
+
+#content .controls .profile-section{
+    bottom: 37px;
+    margin-bottom: 30px;
+    margin-right: 10px;
+    position: fixed;
+    right: 0;
+
+}
+
+#content .controls .profile-section .show-profile{
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    box-shadow: 0 5px 10px rgb(0 0 0 / 30%);
+    color: #000;
+    display: flex;
+    font-size: 10px;
+    height: 50px;
+    justify-content: center;
+    width: 50px;
+}
+
+#content .controls .add-features p{
+    pointer-events: none;
+}
+
+#content .controls  .studio-opts{
+    align-items: center;
+    background-color: rgba(0,0,0,.5);
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1500;
+}
+
+#content .controls .studio-opts .opts{
+    align-items: center;
+    background-color: black;
+    border-radius: 10px;
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+    font-size: 2.7rem;
+    justify-content: center;
+    max-width: 240px;
+    padding: 15px 0;
+    width: 100%;
+}
+
+#content .controls  .studio-opts .opts a{
+    color: #fff;
+    padding: 18px 16px 16px 8px;
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+}
+
+#content .controls .add-features p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    color: black;
+    border-radius: 50px;
+    box-shadow: 0 5px 10px rgb(0 0 0 / 30%);
+    border: solid 1px #ddd;
+    font-size: 20px;
+}
+
+/* #content .controls .add-features button img{
+
+    width: 30px;
+    height: 30px;
+    pointer-events: none;
+} */
+
+/* .main .content-options{
+   
+    display: none;
+} */
+
+.main .content-options button{
+    border: none;
+    padding: 5px;
+    margin: 0 3px;
+    background-color: rgba(0,0,0,0.04);
+    color: #ababab;
+    border-radius: 8px 8px 0 0;
+
+
+}
+
+.main .content-options .active{
+    background-color: white;
+    color: black;
+    box-shadow: 1px -4px 4px -2px rgba(0, 0, 0, 0.475);
+    padding: 8px;
+    padding-bottom: 5px;
+}
+
+.main .current-content{
+    
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+    padding: 0 10px;
+    width: 100%;
+    height: 100%;
+    box-shadow: 1px -1px 4px 1px rgba(0, 0, 0, 0.475);
+    z-index: 1;
+    background-color: white;
+}
+
+.current-content .invisible{ 
+    display: none;
+}
+
+/* .current-content .container-header{
+    display: flex;
+    justify-content: center;
+} */
+
+.current-content .container-header{
+    display: none;
+}
+
+
+.current-content .container-header span{
+    font-size: 3rem;
+    font-weight: 700;
+    padding: 20px;
+}
+
+.current-content .ads-container, .posts-container, .drafts-container{
+    /* overflow-y: auto; */
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+}
+
+
+
+/* .current-content .ads, .posts, .drafts{
+
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom : 10px;
+} */
+
+.current-content .ads, .posts, .drafts{
+    /* margin: 0 10px; */
+    /* overflow-x: auto;
+    display: flex;
+    flex-direction: row; */
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom : 10px;
+}
+
+
+.current-content .invisible{
+    display: none;
+}
+
+@media (max-width: 650px) {
+    .main .content-options{
+        display: block;
+        /* margin-top: 44px; */
+
+
+    }
+
+    .current-content .container-header{
+        display: none;
+    }
+
+
+
+    .current-content .ads, .posts, .drafts{
+        /* margin: 0 10px; */
+        /* overflow-x: auto;
+        display: flex;
+        flex-direction: row; */
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom : 10px;
+    }
+
+    /* .current-content  .posts-container, .drafts-container{
+    
+        display: none;
+    } */
+
+    .current-content .invisible{
+        display: none;
+    }
+    
+}
+
+
+

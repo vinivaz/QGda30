@@ -1,0 +1,47 @@
+#post-content .block-vessel  {
+    margin: 15px 0;
+}
+
+#post-content .block-vessel .txt {
+    
+    background-color: white;
+}
+
+#post-content .block-vessel .txt .final-text{
+    outline: none;
+    border: solid 2px var(--block-color);
+    border-radius: 6px;
+    min-height: 70px;
+    padding: 8px;
+    width: 100%;
+    font-size: 2.9rem
+}
+
+#post-content .block-vessel .txt .block-ctrl{
+    
+}
+
+#post-content .block-vessel .txt .block-ctrl button{
+    display: block;
+    
+    background-color: var(--block-color);
+    
+    border-radius: 3px 3px 0 0;
+    color: black;
+    padding: 6px 8px;
+}
+
+
+
+
+#post-content .block-vessel .editing p{
+    /* border: solid 2px rgb(238, 238, 84);
+    border-radius: 6px; */
+    /* border-left: solid 2px rgb(238, 238, 84);
+    border-bottom: solid 2px rgb(238, 238, 84);
+    outline: none;*/
+}
+
+#post-content .block-vessel .editing .block-ctrl button{
+   
+}

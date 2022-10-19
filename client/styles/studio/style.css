@@ -1,0 +1,262 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+html
+{/* a cada 1rm sera 10px*/
+  font-size: 32.5%;
+}
+
+body {
+    background-color: rgb(245, 243, 243);  
+}
+
+::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    background: #F4F4F4;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #dad7d7;
+}
+
+#webSiteContent {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-x:hidden;
+}
+
+
+
+#webSiteContent .controls {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+#webSiteContent .add-features {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+}
+
+button font{
+    pointer-events: none;
+}
+
+.controls .finish-section {
+    position: fixed;
+    top: 73px;
+    right: 0;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    display:flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.controls .hidden{
+    display: none;
+}
+
+#webSiteContent .controls .finish-section button {
+    margin: 5px 0;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    color: black;
+    box-shadow: 0 5px 10px rgb(0 0 0 / 30%);
+    border: solid 1px #ddd;
+    border-radius: 10px;
+    
+    /* box-shadow: inset 0 -5px 5px rgb(0 0 0 / 20%), 0 5px 10px rgb(0 0 0 / 20%), 0 10px 15px rgb(0 0 0 / 20%) */
+}
+
+#webSiteContent .controls .finish-section .save img{
+    width: 20px;
+    pointer-events: none;
+}
+
+#webSiteContent .controls .finish-section .simulate img{
+    width: 20px;
+    pointer-events: none;
+}
+
+#webSiteContent .controls .add-features button {
+
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    color: black;
+    border-radius: 50px;
+    box-shadow: 0 5px 10px rgb(0 0 0 / 30%);
+    border: solid 1px #ddd;
+}
+
+#webSiteContent .controls .add-features button img{
+
+    width: 30px;
+    height: 30px;
+    pointer-events: none;
+}
+
+.map-placement {
+    position: fixed;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    max-width: 45px;
+    max-height: 80%;
+    width: 100%;
+    margin-left: 12px;
+}
+
+.map {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    color: black;
+    background-color: #f6f6f6;
+    padding: 10px 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border-radius: 13px;
+    /* border: solid 1px #ddd; */
+    box-shadow: rgba(99, 99, 99, 0.56) 0px 0px 7px 1px
+}
+
+.map .block-icon-vessel {
+    /* padding: 5px; */
+    /* background-color: #f6f6f6; */
+    background-color: white;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    box-shadow: rgba(99, 99, 99, 0.30) 0px 1px 4px 0px;
+}
+
+.map .block-icon-vessel:last-of-type{
+    margin-bottom: 0;
+}
+
+.map .block-icon {
+    /* padding: 1px; */
+    /* background-color: #f6f6f6; */
+    border-radius: 6px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map img {
+    pointer-events: none;
+    height: 20px;
+    width: 20px;
+}
+
+.block-opt {
+    position: fixed;
+    top: 44%;
+    right: 0;
+    display: grid;
+    /* grid-template-columns: auto auto; */
+    grid-template-rows: auto;
+    margin: 5px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgb(0 0 0 / 30%);
+}
+
+.block-opt button {
+    border: none;
+    background-color: white;
+    font-size: 10px;
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.block-opt button:first-of-type{
+    border-radius: 10px 10px 0 0;
+}
+
+.block-opt button:last-of-type{
+    border-radius: 0 0 10px 10px;
+}
+
+.block-opt .text {
+    background-color: white;
+    color: black;
+    align-items: center;
+}
+
+.block-opt .text span {
+    margin-right: 4px;
+}
+
+.block-opt .text img {
+    height: 20px;
+    width: 20px;
+}
+
+.block-opt .img {
+    background-color: white;
+    color: black;
+    font-size: 10px;
+
+    align-items: center;
+}
+
+.block-opt .img span {
+    margin-right: 4px;
+}
+
+.block-opt .img img {
+    height: 20px;
+    width: 20px;
+}
+
+.block-opt .tweet {
+    /* background-color: rgb(29, 155, 240); */
+    background-color: white;
+    color: black;
+
+}
+
+.block-opt .tweet span {
+    margin-right: 4px;
+}
+
+.block-opt  img {
+    height: 20px;
+    width: 20px;
+}
+
+
+.post-field .publish {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 25px;
+}

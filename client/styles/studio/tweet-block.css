@@ -1,0 +1,11 @@
+#post-content .block-vessel .tweet {
+    background-color: var(--block-color);
+}
+
+#post-content .block-vessel .tweet .block-ctrl{
+    
+}
+
+#post-content .block-vessel .tweet .block-ctrl button{
+    padding: 6px 8px;
+}

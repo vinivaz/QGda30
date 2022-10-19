@@ -1,0 +1,241 @@
+.ad-showcase{
+    position: absolute;
+    display: flex;
+    overflow: auto;
+    background-color: white;
+    z-index: 1000;
+    height: 100%;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.ad-showcase .ad-btns{
+    z-index: 11;
+    background-color: black;
+    padding: 16px;
+
+    z-index: 11;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.ad-showcase .ad-btns .options {
+    /* position: fixed;
+    top: 0;
+    right: 21px;
+    display: flex;
+    margin-top: 20px; */
+
+    display: flex;
+}
+
+.ad-showcase .ad-btns button{
+    margin: 0 5px;
+    padding: 3px 5px;
+    border-radius: 4px;
+    
+    border: none;
+    color: white;
+    background-color: black;
+}
+
+.ad-showcase .ad-btns a{
+    margin: 0 5px;
+    padding: 3px 5px;
+    border-radius: 4px;
+    /* border: solid 1px; */
+    text-decoration: none;
+    color: white;
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.ad-showcase .ad-btns .options .publish button{
+    
+    /* width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    border: none;
+    color: white;
+    background-color: black;
+    margin: 6px; */
+
+}
+
+/* .ad-showcase .ad-btns .return button img{
+    width: 20px;
+    height: 20px;
+} */
+
+.ad-showcase .open-ad{
+    margin-top: 85px;
+    padding: 30px 10px;
+    display: flex;
+    flex-direction: column;
+    max-width: 788px;
+    width: 100%;
+    /* height: 100%; */
+    background-color: #fafafa;
+    font-size: 2.5rem;
+    border: solid 1px #ddd;
+    border-radius: 7px;
+    overflow-y:auto;
+}
+
+.ad-showcase .open-ad .ad-info{
+    padding: 10px;
+}
+
+.ad-showcase .open-ad .ad-info span{
+    color: rgb(128, 128, 128);
+}
+
+.ad-showcase .open-ad .ad-info p{
+    padding: 5px 0;
+    line-height: 3.5rem;
+    font-weight: 500;
+    max-height: 50rem;
+    overflow: hidden;
+}
+
+.ad-showcase .open-ad .ad-info .ad-pictures{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.ad-showcase .open-ad h1{
+    width: 100%;
+    text-align: center;
+    font-size: 3.5rem;
+    margin: 20px 0;
+}
+
+.ad-showcase .open-ad .ad-creator{
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    color: white;
+    font-size: 2.5rem;
+    background-color: #2625fd;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.ad-showcase .open-ad .ad-name{
+    font-size: 2.5rem;
+}
+
+.ad-showcase .open-ad .rectangle-ad, .square-ad{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.ad-showcase .open-ad .rectangle-ad{
+    background-color: black;
+}
+
+.ad-showcase .open-ad .rectangle-ad .picture{
+    background-color: rgb(16, 16, 16);
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    width: 100%;
+    border-radius: 0 0 7px 7px;
+    --aspect-ratio: calc(24 / 5);
+    --max-height-x-screen-width: calc(147.6 * 100vw);
+    --height-based-on-screen-width: calc(var(--max-height-x-screen-width) / 739.5);
+    --height: var(--height-based-on-screen-width);
+    --width: calc(var(--height) * var(--aspect-ratio));
+    max-height: 147.7px;
+    height: var(--height);
+    width: var(--width);
+
+    /* --aspect-ratio: calc(24 / 5);
+
+    --max-height-x-screen-width: calc(158.3 * 100vw);
+    --height-based-on-screen-width: calc(var(--max-height-x-screen-width) / 600);
+    --height: var(--height-based-on-screen-width);
+
+    --width: calc(var(--height) * var(--aspect-ratio));
+    max-height: 104.2px;
+
+    height: var(--height);
+    width: var(--width); */
+
+}
+
+/*@media (min-width: 788px) {*/
+
+@media (min-width: 788px) {
+    .ad-showcase .open-ad .rectangle-ad .picture{
+      /* height: 147.6px;
+      width: 759.4px; */
+
+      width: 760.2px;
+      background-color: rgb(16, 16, 16);
+    }
+  
+    .ad-editor .ad-pictures .rectangle-ad .picture img{
+      
+      width: 760.2px;
+      object-fit: contain;
+    }
+  }
+
+.ad-showcase .open-ad .ad-pictures span{
+    width: 100%;
+    padding: 5px 5px;
+    background-color: rgb(38, 38, 38);
+    color: white;
+    border-radius: 7px 7px 0 0;
+}
+
+.ad-showcase .open-ad .picture img{
+    object-fit: contain;
+    width: 100%;
+}
+
+.ad-showcase .open-ad .square-ad .picture img{
+    object-fit: contain;
+    width: 100%;
+    max-width: 200px;
+
+}
+
+.ad-showcase .open-ad .rectangle-ad .picture img{
+   /* border-radius: 0 0 7px 7px;
+    --aspect-ratio: calc(24 / 5);
+    --max-height-x-screen-width: calc(157.7* 100vw);
+    --height-based-on-screen-width: calc(var(--max-height-x-screen-width) / 788);
+    --height: var(--height-based-on-screen-width);
+  
+    --width: calc(var(--height) * var(--aspect-ratio));
+    max-height: 157.7px;
+    height: var(--height);
+    width: var(--width); */
+    width: 100%;
+    --aspect-ratio: calc(24 / 5);
+    --max-height-x-screen-width: calc(147.6 * 100vw);
+    --height-based-on-screen-width: calc(var(--max-height-x-screen-width) / 739.5);
+    --height: var(--height-based-on-screen-width);
+    --width: calc(var(--height) * var(--aspect-ratio));
+    max-height: 147.7px;
+    height: var(--height);
+    width: var(--width);
+    object-fit: contain;
+}
+
+

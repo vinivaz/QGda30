@@ -1,0 +1,232 @@
+.post-list{
+    overflow: hidden;
+    display: grid;
+    grid-column-gap: 36px;
+    grid-row-gap: 52px;
+}
+
+.post-list .post{
+    position: relative;
+    display: flex;
+    width: 100%;
+    color: black;
+    text-decoration: none;
+    border-bottom: solid 1px #ddd;
+}
+
+.post-list .post .cover{
+    display: block;
+    max-width: 60%;
+    width: 38%;
+    margin-right:  25px;
+    flex-shrink: 0;
+
+    position: relative;
+    align-self: flex-start;
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.post-list .post .cover .inside-cover{
+    display: block;
+    position: relative;
+    max-width: 100%;
+    padding-bottom: 66.6666667%;
+    height: 0;
+}
+
+.post-list .post .cover .inside-cover .img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.post-list .post .content{
+    padding: 5px 0;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.post-list .post .content .post-data{
+    --p-meta-sep: "\2014";
+    display: flex;
+    flex-direction: column;
+    margin-bottom:  initial;
+    font-family:"Public Sans", system-ui, sans-serif;
+    font-size: 12px;
+    color: #8a8a8a;
+    line-height: 1.5;
+
+}
+
+.post-data > .h2:first-child {
+    margin-top: 0 !important;
+}
+
+.post-list .post .content .post-data h2{
+    font-size: calc(20px * 1.05);
+    margin: 9px 0;
+    line-height: 1.36;
+    color: black;
+}
+
+.post-list .post .content .post-data span{
+    width: 11%;
+    background-color: #ddd;
+    border-radius: 10px;
+    height: 15px;
+}
+
+.post-list .post .content .brief-content{
+    margin-top: 16px;
+    color: #505050;
+    font-size: 15px;
+    line-height: 1.6;
+    word-break: break-all;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.post-list .post .content .brief-content p:last-of-type {
+    margin-bottom: 0;
+}
+
+.post-list .post .content .brief-content p{
+    margin-bottom: 21px;
+    word-break: break-all;
+    word-break: break-word;
+    overflow-wrap: break-word;
+
+}
+
+@media (min-width: 1060px) {
+    .post-list {
+        margin-top: 50px;
+        max-width: 380px;
+        padding: 20px 0;
+    }
+
+    .post-list .open {
+
+        margin: 0 30px;
+        text-decoration: none;
+        color: black;
+    
+        /* display: flex;
+            flex-direction: row;
+            
+            max-height: 110px;
+            height: 100%;
+            width: 100%;
+            margin: 5px 0; */
+    }
+
+
+    
+    .post-list .open .post-content {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .post-list .open .post-content .post-data .post-title {
+        font-family: "Roboto", "Arial", sans-serif;
+        font-size: 3rem;
+        line-height: 4rem;
+        font-weight: 600;
+        max-height: 10rem;
+        overflow: hidden;
+        max-width: unset;
+        text-overflow: ellipsis;
+        white-space: normal;
+        padding: 10px 0;
+    }
+
+    .post-list .open .post-content .post-data {
+        padding: 10px;
+        background-color: #fafafa;
+        border-radius: 0 0 6px 6px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #ddd;
+        border-top: none;
+    }
+
+    .post-list .open .post-content .post-data .post-details {
+        padding: 5px 0;
+    }
+
+    .post-list .open .post-content .post-data .brief-content {
+
+        display: block;
+        font-family: "Roboto", "Arial", sans-serif;
+        font-size: 2.1rem;
+        line-height: 2.7rem;
+        font-weight: 500;
+        max-height: 5.5rem;
+        overflow: hidden;
+        /* max-width: 250px; */
+        text-overflow: ellipsis;
+        white-space: normal;
+    }
+
+    .post-list .open .post-content .img-place {
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        /* max-width: 142px; */
+        width: 100%;
+        /* max-height: 86.38px; */
+        /* height: 229.38px; */
+        /* height: 100%; */
+        border-radius: 6px 6px 0 0;
+    }
+
+    .post-list .open .post-content .img-place img {
+
+        border-radius: 6px 6px 0 0;
+    }
+}
+
+@media (max-width: 767px){
+    .post-list .post .cover{
+        width: 40%;
+    }
+}
+
+@media (max-width: 540px){
+
+    .post-list .post .cover{
+        width: 40%;
+        min-width: 100px;
+        margin-right: 16px;
+    }
+
+    .post-list .post .cover .inside-cover{
+        padding: 0;
+        height: 10vh;
+        min-height: 100px;
+        width: auto;
+    }
+
+    .post-list .post .content .post-data h2 {
+        font-size: calc(14px + (calc(20px * 1.05) - 14px) * 0.4);
+    }
+
+    .post-list .post .content .brief-content{
+        display: none;
+    }
+    
+    
+}

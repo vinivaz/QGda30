@@ -1,12 +1,16 @@
 /node_modules
 
-/client
+
 
 /just-making-sure
 
 /owl-carousel
 
+
 /public
+
+
+.env
 
 rotas.txt
 .DS_Store
@@ -15,7 +19,4 @@ rotas.txt
 .env.test.local
 .env.production.local
 .env
-webpack.common.js
-webpack.dev.js
-webpack.prod.js
-webpack.prodev.js
+

@@ -1,0 +1,31 @@
+.nav-bar{
+    position: absolute;
+    top:0;
+    background-color: #000;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.nav-bar img{
+    height: 40px;
+}
+
+.nav-bar .navigation-opts a{
+    color: white;
+    text-decoration: none;
+    font-size: 3rem;
+    font-family: var(--general-font);
+}
+
+@media(min-width: 700px){
+    .nav-bar{
+        padding: 0 50px;
+    }
+}

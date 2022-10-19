@@ -1,0 +1,199 @@
+.ad-editor{
+  padding: 35px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--general-font);
+  background-color: white;
+  border: solid 1px #ddd;
+  width: 100%;
+  height: 100%;
+  max-width: 95%;
+  overflow-y: auto;
+  max-width: 650px;
+  position: relative;
+}
+
+.ad-editor .creator{
+  font-size: 2rem;
+  position: absolute;
+  top: 100px;
+  right: 79px;
+  color: white;
+  /* background-color: rgb(139, 0, 252); */
+  background-color: #2625fd;
+  padding: 7px 10px;
+  border-radius: 15px;
+}
+
+.ad-editor .ad-title{
+  margin-top: 100px;
+  font-family: var(--general-font);  
+  font-size: 5rem;
+  padding: 8px;
+}
+
+.ad-editor .ad-pictures{
+  width: 100%;
+  max-width: 500px;
+}
+
+.ad-editor .ad-pictures .square-ad{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ad-editor .ad-pictures .ad-ctrl{
+  border-radius: 7px 7px 0 0;
+  width: 100%;
+  display: inline-flex;
+  background: rgb(38, 38, 38);
+  padding: 6px 8px;
+}
+
+.ad-editor .input-editor{
+  max-width: 500px;
+  width: 100%;
+}
+
+.ad-editor .input-editor span{
+  font-size: 2.6rem;
+}
+
+
+.ad-editor input[type=text]{
+  border: solid 1px #ddd;
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 7px;
+  width: 100%;
+}
+
+.ad-editor .save-ad{
+  border: solid 1px #ddd;
+  padding: 15px;
+  margin: 30px 0;
+  border-radius: 7px;
+  max-width: 500px;
+  width: 100%;
+  background-color: black;
+  color: white;
+}
+
+.ad-editor .ad-pictures .square-ad{
+  width: 100%;
+  background-color: black;
+  margin: 10px 0;
+  border-radius: 7px 7px 0 0;
+}
+
+.ad-editor .ad-pictures .rectangle-ad{
+  width: 100%;
+  background-color: black;
+  margin: 10px 0;
+  border-radius: 7px 7px 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ad-editor .ad-pictures .ad-ctrl input[type=file]{
+  display: none;
+}
+
+.ad-editor .ad-pictures .ad-ctrl button{
+  /* background-color: black; */
+  background-color: rgb(38, 38, 38);
+  /* border-top: solid 2px var(--block-color);
+  border-left: solid 2px var(--block-color);
+  border-right: solid 2px var(--block-color);
+  border-bottom: none ; */
+  border: none;
+
+  /* border-radius: 0 3px 0 0; */
+  color: white;
+  /* margin-left: 4px; */
+  /* width: 100%; */
+  /* display: inline-flex;
+  background: rgb(38, 38, 38); */
+}
+
+.ad-editor .ad-pictures .picture{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: dashed 1px rgb(183, 183, 183);
+  
+  background: url(../../assets/image-icon.svg);
+  background-repeat: no-repeat;
+  background-size: 50px 50px;
+  background-position: center center;
+  background: grayscale();
+  background-color: rgb(245, 245, 245);
+  /* border: solid 2px var(--block-color); */
+  /* background-color:  var(--block-color); */
+}
+
+.ad-editor .ad-pictures .square-ad .picture {
+  max-width: 200px;
+  max-height: 200px;
+  width: 200px;
+  height: 200px;
+}
+
+.ad-editor .ad-pictures .rectangle-ad .picture{
+  --aspect-ratio: calc(24 / 5);
+
+  --max-height-x-screen-width: calc(104.2 * 100vw);
+  --height-based-on-screen-width: calc(var(--max-height-x-screen-width) / 700);
+  --height: var(--height-based-on-screen-width);
+  /* --height: 30vmin; */
+  --width: calc(var(--height) * var(--aspect-ratio));
+  max-height: 104.2px;
+
+  height: var(--height);
+  width: var(--width);
+
+}
+
+.ad-editor .ad-pictures .square-ad .picture img{
+  width: 200px;
+  height: 200px;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.ad-editor .ad-pictures .rectangle-ad .picture img{
+ 
+  --aspect-ratio: calc(24 / 5);
+
+  --max-height-x-screen-width: calc(104.2 * 100vw);
+  --height-based-on-screen-width: calc(var(--max-height-x-screen-width) / 700);
+  --height: var(--height-based-on-screen-width);
+  /* --height: 30vmin; */
+  --width: calc(var(--height) * var(--aspect-ratio));
+  max-height: 104.2px;
+
+  height: var(--height);
+  width: var(--width);
+  object-fit: contain;
+}
+
+
+@media (min-width: 700px) {
+  .ad-editor .ad-pictures .rectangle-ad .picture{
+    height: 104px;
+    width: 500px;
+  
+  }
+
+  .ad-editor .ad-pictures .rectangle-ad .picture img{
+    height: 104px;
+    width: 500px;
+    object-fit: contain;
+  }
+}
