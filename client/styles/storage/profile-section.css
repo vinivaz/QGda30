@@ -43,3 +43,25 @@
     height: 60px;
     width: 60px;
 }
+
+.profile-place .profile-box .users{
+
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.profile-place .profile-box .users .user .user-data .user-avatar .avatar{
+    background-color: #000;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    height: 29px;
+    width: 29px;
+}
+
+.profile-place .profile-box .users .user .user-data .user-name{
+    text-align: left;
+}

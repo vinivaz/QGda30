@@ -78,13 +78,23 @@ function setUsers(){
 
     allUsers.map(user => {
         usersElement.append(`
-        <div class="user" id="${user._id}">
-            <div class="user-data">
-                <div class="user-avatar"></div>
-                <div class="user-name"><p>${user.name}</p></div>
+            <div class="user" id="${user._id}">
+                <div class="user-data">
+                    <div class="user-avatar">
+                        <div
+                            class="avatar"
+                            ${user.profile_img != ''?
+                                `style="background-image:url('${user.profile_img}')"`
+                            :
+                                ''
+                            }
+                        >
+                        </div>
+                    </div>
+                    <div class="user-name"><p>${user.name}</p></div>
+                </div>
+                <div class="user-opts">options</div>
             </div>
-            <div class="user-opts"></div>
-        </div>
         `)
     })
 
