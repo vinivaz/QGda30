@@ -111,10 +111,10 @@ function avatarOpts(){
                 canMakeRequest = false 
 
                 var formData = new FormData();
-                console.log(e.target.files[0])
+                
                 formData.append("file", e.target.files[0])
 
-                api.post('/app/profile/edit_profile_pic', formData, { headers: { "Content-Type": `multipart/form-data; boundary=${formData._boundary}` } })
+                api.post('/app/profile/edit_profile_pic', formData, { headers: { "Content-Type": "multipart/form-data"/*`multipart/form-data; boundary=${formData._boundary}`*/ } })
                 .then(res => {
                     profile = res.data;
                     setProfile()

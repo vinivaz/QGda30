@@ -3,7 +3,7 @@ import { getToken, logout } from "./auth";
 
 //192.168.11.6
 //localhost
-axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+// axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
 const api = axios.create({
     //baseURL: `http://localhost:3333`
