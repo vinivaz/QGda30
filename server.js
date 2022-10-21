@@ -28,6 +28,7 @@ app.use(appRouteFiles, express.static(path.join(__dirname, 'dist')));
 //app.use('/app/storage', express.static(path.join(__dirname, 'dist')));
 app.use('/images', express.static(path.join(__dirname, 'tmp', "images")));
 app.use('/ad', express.static(path.join(__dirname, 'tmp', "ad")));
+app.use('/profile', express.static(path.join(__dirname, 'tmp', "ad")));
 app.set('views', path.join(__dirname, 'dist'));
 app.engine('html', require('ejs').renderFile);
 // app.set('view engine', 'html');

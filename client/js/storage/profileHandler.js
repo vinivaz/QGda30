@@ -11,6 +11,8 @@ var canMakeRequest = true;
 
 var profileElement = $('div.profile-data')
 
+var usersElement = $('div.profile-box > .users')
+
 getProfile()
 
 $('.show-profile').on('click', function(){
@@ -35,6 +37,7 @@ export function getProfile(){
 
         console.log(res.data)
         setProfile()
+        setUsers()
     })
 
     
@@ -70,6 +73,23 @@ function setProfile(){
     profileEvents()
 }
 
+function setUsers(){
+    usersElement.empty()
+
+    allUsers.map(user => {
+        usersElement.append(`
+        <div class="user" id="${user._id}">
+            <div class="user-data">
+                <div class="user-avatar"></div>
+                <div class="user-name"><p>${user.name}</p></div>
+            </div>
+            <div class="user-opts"></div>
+        </div>
+        `)
+    })
+
+}
+
 
 function profileEvents(){
     avatarHandler()
@@ -103,32 +123,24 @@ function avatarOpts(){
     $('.opts > input').on('change', function(e){
         if(e.target.files && e.target.files.length > 0){
 
-            const reader = new FileReader();
-            reader.onload = ()=>{
+            if(!canMakeRequest)return;
+            canMakeRequest = false 
 
-                var newImgUrl = reader.result;
-                if(!canMakeRequest)return;
-                canMakeRequest = false 
+            var formData = new FormData();
+            console.log(e.target.files[0])
+            formData.append("file", e.target.files[0])
 
-                var formData = new FormData();
-                
-                formData.append("file", e.target.files[0])
-
-                api.post('/app/profile/edit_profile_pic', formData, { headers: { "Content-Type": "multipart/form-data"/*`multipart/form-data; boundary=${formData._boundary}`*/ } })
-                .then(res => {
-                    profile = res.data;
-                    setProfile()
-                    canMakeRequest = true;
-                })
-                // .catch(err => {
-                //     console.log(err)
-                //     popWarningScreen('Não deu pra colocar foto :( mas tenta denovo depois ',$('#content'))
-                //     canMakeRequest = true;
-                // })
-
-            }
-
-            reader.readAsDataURL(e.target.files[0]);
+            api.post('/app/profile/edit_profile_pic', formData, { headers: { "Content-Type": `multipart/form-data; boundary=${formData._boundary}` } })
+            .then(res => {
+                profile = res.data;
+                setProfile()
+                canMakeRequest = true;
+            })
+            .catch(err => {
+                console.log(err)
+                popWarningScreen('Não deu pra colocar foto :( mas tenta denovo depois ',$('#content'))
+                canMakeRequest = true;
+            })
 
         }
     })
@@ -136,4 +148,8 @@ function avatarOpts(){
     $('button#deleteProfilePic').on('click', function(){
         popWarningScreen('vc clicou no botão de remover foto... pser',$('#content'))
     })
+}
+
+function usersHandler(){
+
 }
