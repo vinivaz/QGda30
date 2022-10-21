@@ -182,7 +182,7 @@ function usersHandler(){
 
                 var options = `
                     <button id="filter" class="opt">
-                        Publicações de ${user.name}
+                        Publicações de ${allUsers[i].name}
                     </button>
                     <button id="admin" class="opt">Tornar admnistrador</button>
                     ${profile.admin == false ? '<button id="admin" class="opt">Tornar admnistrador</button>': ''}
