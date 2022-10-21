@@ -104,12 +104,13 @@ function setUsers(){
         } 
     })
 
+    usersHandler()
 }
 
 
 function profileEvents(){
     avatarHandler()
-    usersHandler()
+
 
 }
 
@@ -170,7 +171,7 @@ function avatarOpts(){
 
 function usersHandler(){
     $('.users > .user').on('click', function(e){
-
+        console.log(e)
         console.log(e.currentTarget.id)
 
         var userID =  e.currentTarget.id
