@@ -8,10 +8,10 @@ axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 const api = axios.create({
     //baseURL: `http://localhost:3333`
     baseURL: 'https://qgda30.herokuapp.com',
-    headers: {
-      'Access-Control-Allow-Origin': 'https://qgda30.herokuapp.com',
-      'Content-Type': 'application/json',
-    },
+    // headers: {
+    //   'Access-Control-Allow-Origin': 'https://qgda30.herokuapp.com',
+    //   'Content-Type': 'application/json',
+    // },
 });
 
 

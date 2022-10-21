@@ -120,11 +120,11 @@ function avatarOpts(){
                     setProfile()
                     canMakeRequest = true;
                 })
-                .catch(err => {
-                    console.log(err)
-                    popWarningScreen('Não deu pra colocar foto :( mas tenta denovo depois ',$('#content'))
-                    canMakeRequest = true;
-                })
+                // .catch(err => {
+                //     console.log(err)
+                //     popWarningScreen('Não deu pra colocar foto :( mas tenta denovo depois ',$('#content'))
+                //     canMakeRequest = true;
+                // })
 
             }
 

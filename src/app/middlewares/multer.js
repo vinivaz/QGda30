@@ -7,7 +7,7 @@ function imgType(req) {
     return path.resolve(__dirname, "..", "..", "..", "tmp", "images")
   } 
 
-  if(req.route.path == '/edit_profile_pic'){
+  if(req.route.path === '/edit_profile_pic'){
     return path.resolve(__dirname, "..", "..", "..", "tmp", "profile")
   }
   

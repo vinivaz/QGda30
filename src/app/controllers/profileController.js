@@ -66,27 +66,26 @@ routes.post('/edit_profile_pic', savePic, async(req, res) => {
     const user = await ownersModel.findById(req.userId);
     //console.log(user);
     const newUserPic = await ownersModel.findByIdAndUpdate(req.userId, {
+      '$set': {
+        profile_img: `https://qgda30.herokuapp.com/profile/${req.file.filename}`
+      }
 
       // profile_img: `localhost:3000/files/profile/${req.file.filename}`
-        profile_img: `https://qgda30.herokuapp.com/profile/${req.file.filename}`
-      
+        
     }, {new: true});
 
     //delete picture if user already had an existing profile picture
-    if(user.profile_img !== ""){
+    if(user.profile_img != ""){
 
       //selecting file name from file url
       const oldPic = user.profile_img.slice(37)
 
-      try {
        fs.unlinkSync(path.resolve(__dirname, "..", "..", "..", "tmp", "profile", oldPic));
       
-      } catch(err) {
-        //console.error(err)
+
 
         return res.json(newUserPic)
-        // return res.json({error: "Error on uploading a picture, Try again"});
-      }
+
     }
 
     return res.json(newUserPic)  
