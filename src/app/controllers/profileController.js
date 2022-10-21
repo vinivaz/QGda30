@@ -113,12 +113,15 @@ routes.put('/admin', async(req, res) => {
 
     //if the admin is giving up on being admin
     if (req.userId == newAdminId){
-
-      user.admin == false;
-
-      await user.save()
-
-      return res.json(user)
+      const newAdmin = await ownersModel.findByIdAndUpdate(newAdminId, {
+        '$set':{
+          admin: false
+        }
+          
+        
+      }, {new: true});
+  
+      return res.json(newAdmin) 
     }
 
     //console.log(user);
@@ -134,8 +137,8 @@ routes.put('/admin', async(req, res) => {
     
   }catch(err){
     console.log(err)
-    return res.json({error: err});
-    // return res.json({error: "Houve um erro, tente denovo mais tarde :("});
+
+    return res.json({error: "Houve um erro, tente denovo mais tarde :("});
   }
   
 });
