@@ -76,12 +76,7 @@ function setProfile(){
 function setUsers(){
     usersElement.empty()
 
-    
-
     allUsers.map(user => {
-
-        var size = 20;
-        for(var i = 0; i < size; i++){
             usersElement.append(`
                 <div class="user" id="${user._id}">
                     <div class="user-data">
@@ -98,11 +93,35 @@ function setUsers(){
                         </div>
                         <div class="user-name"><p>${user.name}</p></div>
                     </div>
-                    <div class="user-opts">options</div>
                 </div>
             `)
-        } 
     })
+
+    // allUsers.map(user => {
+
+    //     var size = 20;
+    //     for(var i = 0; i < size; i++){
+    //         usersElement.append(`
+    //             <div class="user" id="${user._id}">
+    //                 <div class="user-data">
+    //                     <div class="user-avatar">
+    //                         <div
+    //                             class="avatar"
+    //                             ${user.profile_img != ''?
+    //                                 `style="background-image:url('${user.profile_img}')"`
+    //                             :
+    //                                 ''
+    //                             }
+    //                         >
+    //                         </div>
+    //                     </div>
+    //                     <div class="user-name"><p>${user.name}</p></div>
+    //                 </div>
+    //                 <div class="user-opts">options</div>
+    //             </div>
+    //         `)
+    //     } 
+    // })
 
     usersHandler()
 }
