@@ -211,7 +211,7 @@ function turnAdmin(newAdminId){
             "Invalid token",
           ]
 
-        if(res.data.error && !authErrorTypes.includes(response.data.error)){
+        if(res.data.error && !authErrorTypes.includes(res.data.error)){
             popWarningScreen(res.data.error,$('#content'))
         }
     })
