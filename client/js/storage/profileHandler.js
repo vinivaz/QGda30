@@ -180,9 +180,29 @@ function usersHandler(){
             if(allUsers[i]._id == userID){
                 console.log(allUsers)
 
-                popWarningScreen(`vc clicou no user de id ${allUsers[i]._id}... err gatan`,$('#content'))
+                var options = `
+                    <button id="filter" class="opt">
+                        Publicações de ${user.name}
+                    </button>
+                    <button id="admin" class="opt">Tornar admnistrador</button>
+                    ${profile.admin == false ? '<button id="admin" class="opt">Tornar admnistrador</button>': ''}
+                `
+    
+                popOptsScreen($('div#content'), options)
+
+                $('filter').on('click', function(){
+                    turnAdmin(allUsers[i]._id)
+                })
+
             }
         }
 
     }) 
+}
+
+function turnAdmin(newAdminId){
+    api.put('/app/profile/admin', {newAdminId})
+    .then(res => {
+        console.log(res.data)
+    })
 }
