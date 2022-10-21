@@ -3,6 +3,7 @@
 }
 
 .profile-place .profile-box{
+    flex-direction: column;
     background-color: #ffffffe8;
     border-radius: 13px;
     display: none;
@@ -45,12 +46,33 @@
 }
 
 .profile-place .profile-box .users{
-
     align-items: center;
     display: flex;
+    flex-direction: row;
     flex-direction: column;
     justify-content: flex-start;
     width: 100%;
+    padding: 0 10px;
+    margin-top: 6px;
+}
+
+.profile-place .profile-box .users .user {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.profile-place .profile-box .users .user .user-data{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    width: 100%;
+}
+
+.profile-place .profile-box .users .user .user-data{
+    margin-right: 10px;
 }
 
 .profile-place .profile-box .users .user .user-data .user-avatar .avatar{
