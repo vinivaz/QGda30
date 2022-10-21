@@ -204,5 +204,8 @@ function turnAdmin(newAdminId){
     api.put('/app/profile/admin', {newAdminId})
     .then(res => {
         console.log(res.data)
+        if(res.data.error == 'Houve um erro, tente denovo mais tarde :('){
+            popWarningScreen(res.data.error,$('#content'))
+        }
     })
 }

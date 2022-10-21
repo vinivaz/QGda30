@@ -123,7 +123,10 @@ routes.put('/admin', async(req, res) => {
 
     //console.log(user);
     const newAdmin = await ownersModel.findByIdAndUpdate(newAdminId, {
+      '$set':{
         admin: true
+      }
+        
       
     }, {new: true});
 
@@ -131,7 +134,8 @@ routes.put('/admin', async(req, res) => {
     
   }catch(err){
     console.log(err)
-    return res.json({error: "Houve um erro, tente denovo mais tarde :("});
+    return res.json({error: err});
+    // return res.json({error: "Houve um erro, tente denovo mais tarde :("});
   }
   
 });
