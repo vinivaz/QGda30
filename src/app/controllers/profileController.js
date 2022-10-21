@@ -92,7 +92,8 @@ routes.post('/edit_profile_pic', savePic, async(req, res) => {
     return res.json(newUserPic)  
   }catch(err){
     console.log(err)
-    return res.json({error: "Houve um erro, tente denovo mais tarde :("});
+    // return res.json({error: "Houve um erro, tente denovo mais tarde :("});
+    return res.json({error: err});
   }
   
 });
