@@ -58,7 +58,7 @@ routes.get('/find', async(req, res) => {
   
 });
 
-//post profile picture route
+//post profile picture route /app/profile/edit_profile_pic
 routes.post('/edit_profile_pic', savePic, async(req, res) => {
   
   try{
