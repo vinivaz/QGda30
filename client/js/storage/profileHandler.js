@@ -109,6 +109,8 @@ function setUsers(){
 
 function profileEvents(){
     avatarHandler()
+    usersHandler()
+
 }
 
 function avatarHandler(){
@@ -167,5 +169,18 @@ function avatarOpts(){
 }
 
 function usersHandler(){
+    $('.users > .user').on('click', function(e){
 
+        console.log(e.currentTarget.id)
+
+        var userID =  e.currentTarget.id
+        
+        for(var i = 0; i < allUsers.length; i++){
+            if(allUsers[i]._id == userID){
+                console.log(allUsers)
+
+                popWarningScreen(`vc clicou no user de id ${allUsers[i]._id} ... pser... err gatan`,$('#content'))
+            }
+        }
+    }) 
 }

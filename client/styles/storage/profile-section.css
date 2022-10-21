@@ -54,6 +54,8 @@
     width: 100%;
     padding: 0 10px;
     margin-top: 6px;
+    overflow-y: auto;
+    padding: 0 7px 7px 7px;
 }
 
 .profile-place .profile-box .users .user {
@@ -61,6 +63,7 @@
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
+    padding-bottom: 5px;
 }
 
 .profile-place .profile-box .users .user .user-data{
@@ -73,6 +76,10 @@
 
 .profile-place .profile-box .users .user .user-data{
     margin-right: 10px;
+}
+
+.profile-place .profile-box .users .user .user-data .user-avatar{
+    margin-right: 6px;
 }
 
 .profile-place .profile-box .users .user .user-data .user-avatar .avatar{
