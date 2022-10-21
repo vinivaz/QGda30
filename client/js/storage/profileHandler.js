@@ -179,8 +179,9 @@ function usersHandler(){
             if(allUsers[i]._id == userID){
                 console.log(allUsers)
 
-                popWarningScreen(`vc clicou no user de id ${allUsers[i]._id} ... pser... err gatan`,$('#content'))
+                popWarningScreen(`vc clicou no user de id ${allUsers[i]._id}... err gatan`,$('#content'))
             }
         }
+
     }) 
 }
