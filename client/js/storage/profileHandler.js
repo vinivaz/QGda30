@@ -190,7 +190,7 @@ function usersHandler(){
     
                 popOptsScreen($('div#content'), options)
 
-                $('filter').on('click', function(){
+                $('#filter').on('click', function(){
                     turnAdmin(allUsers[i]._id)
                 })
 
