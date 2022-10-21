@@ -203,8 +203,15 @@ function usersHandler(){
 function turnAdmin(newAdminId){
     api.put('/app/profile/admin', {newAdminId})
     .then(res => {
-        console.log(res.data)
-        if(res.data.error == 'Houve um erro, tente denovo mais tarde :('){
+
+        const authErrorTypes = [
+            "No token providen",
+            "Token error",
+            "Token malformated",
+            "Invalid token",
+          ]
+
+        if(res.data.error && !authErrorTypes.includes(response.data.error)){
             popWarningScreen(res.data.error,$('#content'))
         }
     })
