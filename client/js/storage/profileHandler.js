@@ -36,8 +36,8 @@ export function getProfile(){
         allUsers = res.data.allUsers;
 
         console.log(res)
-        // setProfile()
-        // setUsers()
+        setProfile()
+        setUsers()
     })
 
     
