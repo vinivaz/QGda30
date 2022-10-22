@@ -80,6 +80,10 @@ module.exports = {
         return res.json({error: 'E-mail não encontrado'})
       };
 
+      if(!owner.password || owner.password == '' || owner.password == null){
+        return res.json({errorDialog: 'Sua conta não usa esse metodo de autenticação, tente outra forma de login.' });
+      }
+
       if(!await bcrypt.compare(password, owner.password)) {
         return res.json({ error: 'Senha inválida' });
       };
@@ -92,9 +96,31 @@ module.exports = {
       });
     }catch(err){
 
-      return res.json({ error: 'Error on Signing' });
+      return res.json({ error: 'Houve falha ao tentar entrar' });
     }
 
+  },
+
+  async googleAuth(req, res){
+    const { email } = req.body;
+
+    try{
+
+      const owner = await ownerModel.findOne({email}).select('+password');
+
+      if(!owner) {
+        return res.json({errorDialog: 'E-mail não encontrado'})
+      };
+
+      owner.password = undefined;
+
+      return res.json({
+        owner,
+        token: generateToken({ id: owner.id})
+      });
+    }catch(err){
+      return res.json({errorDialog : 'Houve falha ao tentar entrar' });
+    }
   },
 
   async forgotPassword(req, res) {

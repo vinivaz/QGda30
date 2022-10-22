@@ -1,6 +1,15 @@
+import api from '../../tools/api.js'
+import { login, isAuthenticated } from '../../tools/auth';
+
+
+
 function handleCredentialResponse(response) {
     const data = jwt_decode(response.credential)
     console.log(data)
+
+    // if(data.email){
+
+    // }
   
     // fullName.textContent = data.name
     // sub.textContent = data.sub
