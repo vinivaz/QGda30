@@ -184,7 +184,12 @@ function avatarOpts(){
     })
 
     $('button#deleteProfilePic').on('click', function(){
-        popWarningScreen('vc clicou no botão de remover foto... pser',$('#content'))
+       var {element, confirm} = popScreen('Deseja mesmo remove sua foto de perfil?')
+
+       confirm.on('click', function(){
+        element.remove()
+        removeProfilePic()
+       })
     })
 }
 
@@ -219,6 +224,8 @@ function usersHandler(){
     }) 
 }
 
+
+
 function turnAdmin(newAdminId){
     api.put('/app/profile/admin', {newAdminId})
     .then(res => {
@@ -233,5 +240,23 @@ function turnAdmin(newAdminId){
         if(res.data.error && !authErrorTypes.includes(res.data.error)){
             popWarningScreen(res.data.error,$('#content'))
         }
+    })
+}
+
+function removeProfilePic(){
+    api.put('/app/profile/remove_profile_pic')
+    .then(res => {
+        if(res.data.errorDialog){
+            popWarningScreen(res.data.errorDialog, $('#content'))
+            return
+        }
+
+        profile.profile_img = ""
+        setProfile()
+        return
+    })
+    .catch(err => {
+        console.log(err)
+        popWarningScreen('Houve um erro, mas tenta denovo depois', $('#content'))
     })
 }

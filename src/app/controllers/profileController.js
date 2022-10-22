@@ -162,7 +162,10 @@ routes.put('/remove_profile_pic', async(req, res) => {
       
       } catch(err) {
         console.error(err)
-        return res.json({error: "Ei... houve uma falha ao tentar apagar a imagem, tenta denovo mais tarde"});
+        return res.json({
+          
+          dialog: "Ei... houve uma falha ao tentar apagar a imagem, tenta denovo mais tarde"
+        });
       }
     }
 
@@ -171,7 +174,7 @@ routes.put('/remove_profile_pic', async(req, res) => {
     return res.json(user);
   }catch(err){
     console.log(err)
-    return res.json({error: "Ei... houve uma falha ao tentar apagar a imagem, tenta denovo mais tarde"});
+    return res.json({errorDialog: "Ei... houve uma falha ao tentar apagar a imagem, tenta denovo mais tarde"});
   }
 });
 

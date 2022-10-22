@@ -30,6 +30,10 @@ export function popScreen(dialog, cb) {
   $('div#content').append(newScreen(dialog))
   $('div#webSiteContent').append(newScreen(dialog))
 
+  $('button.deny').on('click', function(e){
+    $('div.dialog-surrounding').remove()
+  })
+
   $(document).on('mouseup', function(e){
     //if the user click outside, hide this div
     
