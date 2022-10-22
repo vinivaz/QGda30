@@ -43,11 +43,17 @@ routes.get('/find', async(req, res) => {
   try{
 
     await ownersModel.findByIdAndUpdate(req.userId, {admin: true})
+
+    var allUsers = [], loggedUser;
   
     //const user = await userModel.findById(req.userId);
-    const allUsers = await ownersModel.find();
+    const Users = await ownersModel.find();
 
-    const loggedUser = allUsers.find(user =>  user._id == req.userId)
+    Users.map( user => {
+      user._id !== req.userId? allUsers.push(user) : loggedUser = user;
+    })
+
+    //const loggedUser = allUsers.find(user =>  user._id == req.userId)
     //console.log(user);
 
     return res.json({allUsers, loggedUser})  
@@ -67,16 +73,12 @@ routes.post('/edit_profile_pic', savePic, async(req, res) => {
     //console.log(user);
     const newUserPic = await ownersModel.findByIdAndUpdate(req.userId, {
       '$set': {
-        profile_img: `https://qgda30.herokuapp.com/profile/8bc0968e61ecec0dac499d644ef208d9.jpg`
-        //profile_img: `https://qgda30.herokuapp.com/profile/${req.file.filename}`
+        //profile_img: `https://qgda30.herokuapp.com/profile/8bc0968e61ecec0dac499d644ef208d9.jpg`
+        profile_img: `https://qgda30.herokuapp.com/profile/${req.file.filename}`
       }
-
-      
-
       // profile_img: `localhost:3000/files/profile/${req.file.filename}`
         
     }, {new: true});
-
     //delete picture if user already had an existing profile picture
     if(user.profile_img != ""){
 
@@ -95,7 +97,7 @@ routes.post('/edit_profile_pic', savePic, async(req, res) => {
   }catch(err){
     console.log(err)
     // return res.json({error: "Houve um erro, tente denovo mais tarde :("});
-    return res.json({error: err});
+    return res.json({errorDialog: "Houve um erro, tente denovo mais tarde :("});
   }
   
 });
@@ -110,18 +112,22 @@ routes.put('/admin', async(req, res) => {
     const user = await ownersModel.findById(req.userId);
 
     if(user.admin == false){
-      return res.json({error: 'Ei... precisa ser admnistrador pra poder fazer issorr'})
+      return res.json({errorDialog: 'Ei... precisa ser admnistrador pra poder fazer issorr'})
     }
 
 
     //if the admin is giving up on being admin
-    if (req.userId == newAdminId){
+    if(user._id == newAdminId){
+      const allAdmin = await ownersModel.find({admin: true})
+
+      if(allAdmin.length == 1){
+        return res.json({ errorDialog: "Pelo menos um administrador é necessário, você pode tornar alguém administrador e depois tentar denovo" })
+      }
+
       const newAdmin = await ownersModel.findByIdAndUpdate(newAdminId, {
         '$set':{
           admin: false
         }
-          
-        
       }, {new: true});
   
       return res.json(newAdmin) 
@@ -141,7 +147,7 @@ routes.put('/admin', async(req, res) => {
   }catch(err){
     console.log(err)
 
-    return res.json({error: "Houve um erro, tente denovo mais tarde :("});
+    return res.json({errorDialog: "Houve um erro, tente denovo mais tarde :("});
   }
   
 });
@@ -167,12 +173,12 @@ routes.put('/remove_profile_pic', async(req, res) => {
         console.error(err)
         return res.json({
           
-          dialog: "Ei... houve uma falha ao tentar apagar a imagem, tenta denovo mais tarde"
+          errorDialog: "Ei... houve uma falha ao tentar apagar a imagem, tenta denovo mais tarde"
         });
       }
     }
 
-    user.profile_img = undefined;
+    user.profile_img = '';
 
     return res.json(user);
   }catch(err){

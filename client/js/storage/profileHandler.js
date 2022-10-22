@@ -153,34 +153,11 @@ function avatarHandler(){
 function avatarOpts(){
     $('#setProfilePic').on('click', function(){
         console.log('clicou no setprofile')
-
-        
         $('.opts > input').trigger('click')
     })
 
     $('.opts > input').on('change', function(e){
-        if(e.target.files && e.target.files.length > 0){
-
-            if(!canMakeRequest)return;
-            canMakeRequest = false 
-
-            var formData = new FormData();
-            console.log(e.target.files[0])
-            formData.append("file", e.target.files[0])
-
-            api.post('/app/profile/edit_profile_pic', formData, { headers: { "Content-Type": `multipart/form-data; boundary=${formData._boundary}` } })
-            .then(res => {
-                profile = res.data;
-                setProfile()
-                canMakeRequest = true;
-            })
-            .catch(err => {
-                console.log(err)
-                popWarningScreen('Não deu pra colocar foto :( mas tenta denovo depois ',$('#content'))
-                canMakeRequest = true;
-            })
-
-        }
+        setProfilePic(e)
     })
 
     $('button#deleteProfilePic').on('click', function(){
@@ -230,17 +207,49 @@ function turnAdmin(newAdminId){
     api.put('/app/profile/admin', {newAdminId})
     .then(res => {
 
-        const authErrorTypes = [
-            "No token providen",
-            "Token error",
-            "Token malformated",
-            "Invalid token",
-          ]
-
-        if(res.data.error && !authErrorTypes.includes(res.data.error)){
-            popWarningScreen(res.data.error,$('#content'))
+        if(res.data.dialogError){
+            popWarningScreen(res.data.errorDialog, $('#content'))
+            return
         }
+
+        getProfile()
+
     })
+    .catch(err => {
+        console.log(err)
+        popWarningScreen('Houve um erro :( mas tenta denovo depois ', $('#content'))
+    })
+}
+
+function setProfilePic(e){
+    if(e.target.files && e.target.files.length > 0){
+
+        if(!canMakeRequest)return;
+        canMakeRequest = false 
+
+        var formData = new FormData();
+        console.log(e.target.files[0])
+        formData.append("file", e.target.files[0])
+
+        api.post('/app/profile/edit_profile_pic', formData, { headers: { "Content-Type": `multipart/form-data; boundary=${formData._boundary}` } })
+        .then(res => {
+            if(res.data.errorDialog){
+                popWarningScreen(res.data.errorDialog, $('#content'))
+                canMakeRequest = true;
+                return
+            }
+
+            profile = res.data;
+            setProfile()
+            canMakeRequest = true;
+        })
+        .catch(err => {
+            console.log(err)
+            popWarningScreen('Não deu pra colocar foto :( mas tenta denovo depois ', $('#content'))
+            canMakeRequest = true;
+        })
+
+    }
 }
 
 function removeProfilePic(){
