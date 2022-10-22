@@ -1,1 +1,27 @@
-<!DOCTYPE html><html lang=en><head><meta charset=UTF-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Entrar</title><script defer=defer src=login.cbcf9a46ebfdf3661f18.bundle.js></script><link href=login.0d3b507d53c18cfaa60a.css rel=stylesheet></head><body><div id=pageContent><div class=login-form><h1>Entrar</h1><div class=feedback></div><div class=form-input><input name=email placeholder=E-mail type=email> <input name=password placeholder=Senha type=password></div><button id=login>entrar</button></div></div></body></html>
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset=UTF-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <title>Entrar</title>
+    <script src=https://accounts.google.com/gsi/client async defer=defer></script>
+    <script src=https://unpkg.com/jwt-decode/build/jwt-decode.js></script>
+<script defer=defer src=googleLogin.fcd08a1a127f63956cfb.bundle.js></script><script defer=defer src=login.cbcf9a46ebfdf3661f18.bundle.js></script><link href=login.0d3b507d53c18cfaa60a.css rel=stylesheet></head>
+<body>
+    <div id=pageContent>
+        <div class=login-form>
+            <h1>Entrar</h1>
+            <div class=feedback></div>
+            <div class=form-input>
+                <input name=email placeholder=E-mail type=email>
+                <input name=password placeholder=Senha type=password>
+            </div>
+            <button id=login>entrar</button>
+        </div>
+        <div class=google-login>
+            <button id=google-login-btn></button>
+        </div>
+    </div>
+</body>
+</html>

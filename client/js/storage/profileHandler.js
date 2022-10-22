@@ -27,8 +27,6 @@ $('.show-profile').on('click', function(){
 
 })
 
-
-
 export function getProfile(){
     api.get('/app/profile/find')
     .then(res => {
@@ -39,12 +37,7 @@ export function getProfile(){
         setProfile()
         setUsers()
     })
-
-    
 }
-
-
-
 
 function setProfile(){
     profileElement.empty()

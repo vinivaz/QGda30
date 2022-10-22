@@ -4,6 +4,7 @@ module.exports = {
     entry: {
         vendor: "./client/js/studio/vendor.js",
         studio: "./client/js/studio/index-test.js",
+        googleLogin: "./client/js/login/googleLogin.js",
         login: "./client/js/login/index.js",
         storage: "./client/js/storage/index.js",
         home: './client/js/home/index.js',

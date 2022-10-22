@@ -53,11 +53,11 @@ module.exports = merge(common,{
           }),
           new HtmlWebpackPlugin({
             filename: 'login.html',
-            template: "./client/views/login.html",
-            chunks:['login'],
+            template: "!!raw-loader!" +"./client/views/login.html",
+            chunks:['googleLogin','login'],
             minify: {
                 removeAttributeQuotes: true,
-                collapseWhitespace: true,
+                // collapseWhitespace: true,
                 removeComments: true
             }
           }),
