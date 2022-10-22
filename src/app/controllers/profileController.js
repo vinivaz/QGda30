@@ -50,7 +50,12 @@ routes.get('/find', async(req, res) => {
     const Users = await ownersModel.find();
 
     Users.map( user => {
-      user._id !== req.userId? allUsers.push(user) : loggedUser = user
+      if(user._id !== req.userId){
+        allUsers.push(user)
+      }else{
+        loggedUser = user
+      }
+
     })
 
     //const loggedUser = allUsers.find(user =>  user._id == req.userId)
