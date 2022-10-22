@@ -1,5 +1,5 @@
 import api from '../../tools/api';
-import { popWarningScreen, popOptsScreen } from '../global/dialogScreen';
+import { popScreen, popWarningScreen, popOptsScreen } from '../global/dialogScreen';
 
 var profile;
 

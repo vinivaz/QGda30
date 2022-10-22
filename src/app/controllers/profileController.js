@@ -67,8 +67,11 @@ routes.post('/edit_profile_pic', savePic, async(req, res) => {
     //console.log(user);
     const newUserPic = await ownersModel.findByIdAndUpdate(req.userId, {
       '$set': {
-        profile_img: `https://qgda30.herokuapp.com/profile/${req.file.filename}`
+        profile_img: `https://qgda30.herokuapp.com/profile/8bc0968e61ecec0dac499d644ef208d9.jpg`
+        //profile_img: `https://qgda30.herokuapp.com/profile/${req.file.filename}`
       }
+
+      
 
       // profile_img: `localhost:3000/files/profile/${req.file.filename}`
         
