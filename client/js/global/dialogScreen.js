@@ -122,16 +122,19 @@ export function popOptsScreen(element,opts) {
 
 export function popUpElement(elements){
 
+
+
   var wholeDiv = $(`
     <div class="hiding-area">
-      <p>&#10006;</p>
+      <div class="exit">&#10006;</div>
       <div class="safe-area">
         ${elements}
       </div>
     </div>
   `)
 
-  $('body').append(wholeDiv)
+  $('#content').append(wholeDiv)
+  $('div#webSiteContent').append(wholeDiv)
 
   var hidingArea = $('.hiding-area')
   var safeArea = $('.safe-area')

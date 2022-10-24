@@ -44,11 +44,11 @@ $('.add-freshman').on('click', function(){
                 </p>
             </div>
 
-            
+
 
             <div class="freshman-list-container">
                 <div class="freshman-list-header">
-                    Lista de E-mails
+                    <p>Lista de E-mails<p/>
                 </div>
                 <div class="freshman-list"></div>
             </div>
