@@ -174,7 +174,7 @@
 
 }
 
-.hiding-area .safe-area .add-user-screen .add-user-title p{
+.hiding-area .safe-area .add-user-screen{
   max-height: 324px;
   overflow-y: auto;
 }

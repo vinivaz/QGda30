@@ -48,7 +48,7 @@ $('.add-freshman').on('click', function(){
 
             <div class="freshman-list-container">
                 <div class="freshman-list-header">
-                    <p>Lista de E-mails<p/>
+                    <p>Lista de E-mails</p>
                 </div>
                 <div class="freshman-list"></div>
             </div>
