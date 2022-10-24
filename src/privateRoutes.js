@@ -10,6 +10,7 @@ routes
   .use('/home', require('./app/controllers/homePageController'))
   .use('/ads', require('./app/controllers/adsController'))
   .use('/profile', require('./app/controllers/profileController'))
+  .use('/freshman', require('./app/controllers/freshmanController'))
 
   .get('/list', ownerController.list)
   .post('/register', ownerController.register)

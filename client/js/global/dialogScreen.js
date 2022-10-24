@@ -119,3 +119,41 @@ export function popOptsScreen(element,opts) {
 
   return willHideEl;
 }
+
+export function popUpElement(elements){
+
+  var wholeDiv = $(`
+    <div class="hiding-area">
+      <p>&#10006;</p>
+      <div class="safe-area">
+        ${elements}
+      </div>
+    </div>
+  `)
+
+  $('body').append(wholeDiv)
+
+  var hidingArea = $('.hiding-area')
+  var safeArea = $('.safe-area')
+
+  $(document).on('mouseup', function(e){
+
+    //if the user click outside, hide this div
+
+        
+    if (!safeArea.is(e.target) && !safeArea.find(e.target).length == 1) {
+
+      $(document).off('mouseup');
+      hideArea() 
+    }
+
+  })
+
+  function hideArea(){
+    hidingArea.remove()
+  }
+    
+  return {
+    removePopUp: hideArea
+  };
+}

@@ -1,5 +1,5 @@
 import api from '../../tools/api';
-import { popScreen, popWarningScreen, popOptsScreen } from '../global/dialogScreen';
+import { popScreen, popWarningScreen, popOptsScreen, popUpElement } from '../global/dialogScreen';
 
 var profile;
 
@@ -12,6 +12,8 @@ var canMakeRequest = true;
 var profileElement = $('div.profile-data')
 
 var usersElement = $('div.profile-box > .users')
+
+var freshManList;
 
 getProfile()
 
@@ -27,13 +29,43 @@ $('.show-profile').on('click', function(){
 
 })
 
+$('.add-freshman').on('click', function(){
+
+    var addFreshmanScreen = `
+        <div class="add-user-screen">
+            <div class="add-user-title"><p>Adicionar usuário</p></div>
+
+            <div class="screen-info">
+                <p>
+                    O cadastro de novos usuários do QG só é possivel aos e-mails que estiverem na registrados na lista de e-mails permitidos, administradores podem adicionar
+                    ou remover emails desta lista, após o registro, o e-mail tem 24 horas para cadastrar na conta do QG da 30, depois disso,
+                    o e-mail expira e será necessario que um administrador faça um novo registro.
+                    O botão de entrar para o QG na página de cadastro só aparece caso exista algum e-mail não expirado na lista.
+                </p>
+            </div>
+
+            
+
+            <div class="freshman-list-container">
+                <div class="freshman-list-header">
+                    Lista de E-mails
+                </div>
+                <div class="freshman-list"></div>
+            </div>
+        </div>
+    `
+
+    var hideElement = popUpElement(addFreshmanScreen)
+
+})
+
 export function getProfile(){
     api.get('/app/profile/find')
     .then(res => {
         profile = res.data.loggedUser;
         allUsers = res.data.allUsers;
 
-        console.log(res)
+
         setProfile()
         setUsers()
     })

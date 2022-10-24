@@ -10,6 +10,10 @@ const freshmanList = new mongoose.Schema({
     emailExpires:{
         type: Date,
         select: false,
+    },
+    expired:{
+        type:Boolean,
+        
     }
 },{timestamps: true})
 
