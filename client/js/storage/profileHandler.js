@@ -97,6 +97,8 @@ $('.add-freshman').on('click', function(){
         if(!canMakeRequest) return;
         canMakeRequest = false;
 
+        console.log(emailInput)
+
         api.post('/app/freshman/', {email: emailInput})
         .then( res => {
             canMakeRequest = true;

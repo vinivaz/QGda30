@@ -34,7 +34,7 @@ routes.post('/', async(req, res)=>{
     try{
         const { email } = req.body
 
-        return res.json(email)
+        return res.json({email})
 
         const now = new Date();
         now.setHours(now.getHours() + 1);
