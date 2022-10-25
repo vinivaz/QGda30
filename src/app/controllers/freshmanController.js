@@ -34,8 +34,10 @@ routes.post('/', async(req, res)=>{
     try{
         const { email } = req.body
 
+        return res.json(email)
+
         const now = new Date();
-        now.setHours(now.getHours() + 24);
+        now.setHours(now.getHours() + 1);
 
         const newFreshman = await freshmanModel.findOneAndUpdate(
                 {

@@ -13,7 +13,7 @@ const freshmanList = new mongoose.Schema({
     },
     expired:{
         type:Boolean,
-        
+        default: false
     }
 },{timestamps: true})
 

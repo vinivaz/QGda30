@@ -100,11 +100,13 @@ $('.add-freshman').on('click', function(){
         api.post('/app/freshman/', {email: emailInput})
         .then( res => {
             canMakeRequest = true;
+
+            console.log(res)
             if(res.data.errorDialog){
                 popWarningScreen(res.data.errorDialog)
                 return
             }
-            console.log(res)
+            
 
             freshManList.push(res.data.newFreshman)
 
