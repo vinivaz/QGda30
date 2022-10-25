@@ -45,6 +45,12 @@ export function popScreen(dialog, cb) {
     }
   })
 
+  $('button.deny').on('click', function(){
+    $('div.dialog-surrounding').remove()
+  })
+
+
+
   return {
     element: $('div.dialog-surrounding'),
     confirm: $('button.confirm'),

@@ -144,19 +144,51 @@ function getFreshmanList(){
 }
 
 function showFreshmanList(){
+    $('.freshman-list').empty()
+
     freshManList.map( freshman => {
         $('.freshman-list').append(`
             <div class="freshman-list-item">
                 <p>${freshman.email}</p> 
                 ${freshman.expired == true? `<div class="is-expired"><span>expirado</span></div>`: ''} 
-                <button class="delete-freshman-list-item">apagar</button>
+                <button class="delete-freshman-list-item" data-email="${freshman.email}" >apagar</button>
             </div>
         `)
     })
 
     $('.delete-freshman-list-item').on('click', function(e){
-        console.log(e)
+        console.log(e.target.attributes)
+        var email = $(this).attr("data-email");
+
+        deletefromFreshmen(email)
     })
+}
+
+function deletefromFreshmen(email){
+
+    console.log('vai deletar ', email)
+
+    var {element, confirm} = popScreen(`Deseja mesmo apagar ${email} da lista de e-mail permitidos o cadastro?`)
+
+    confirm.on('click', function(){
+        api.delete(`/app/freshman/${email}`)
+        .then(res =>{
+            if(res.data.errorDialog){
+                popWarningScreen(res.data.errorDialog)
+                return;
+            }
+
+            showFreshmanList()
+            element.remove()
+        })
+        .catch(err => {
+            console.log(err);
+            popWarningScreen("Poxa não deu pra apagar, mas tenta denovo dps sla")
+        })
+
+    })
+
+
 }
 
 export function getProfile(){
