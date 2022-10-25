@@ -109,19 +109,7 @@ $('.add-freshman').on('click', function(){
                 return
             }
 
-            var foundInFreshmanList = false;
-
-            for(var i = 0; i < freshManList.length; i++){
-                if(freshManList[i].email == res.data.email){
-                    freshManList[i] = res.data
-                    foundInFreshmanList = true
-                    
-                }                
-            }
-
-            if(!foundInFreshmanList){
-                freshManList.push(res.data)
-            }
+            getFreshmanList()
             
             $('.freshman-email-input > input').val('')
 
@@ -164,6 +152,10 @@ function showFreshmanList(){
                 <button class="delete-freshman-list-item">apagar</button>
             </div>
         `)
+    })
+
+    $('.delete-freshman-list-item').on('click', function(e){
+        console.log(e)
     })
 }
 
