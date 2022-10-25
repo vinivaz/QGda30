@@ -84,7 +84,7 @@ $('.add-freshman').on('click', function(){
         </div>
     `
 
-    var hideElement = popUpElement(addFreshmanScreen)
+    popUpElement(addFreshmanScreen)
 
     getFreshmanList()
 
@@ -101,9 +101,10 @@ $('.add-freshman').on('click', function(){
         .then( res => {
             canMakeRequest = true;
             if(res.data.errorDialog){
-                popWarningScreen('Houve um erro ao adicionar um e-mail para a lista')
+                popWarningScreen(res.data.errorDialog)
                 return
             }
+            console.log(res)
 
             freshManList.push(res.data.newFreshman)
 
@@ -122,9 +123,11 @@ function getFreshmanList(){
     api.get('/app/freshman/')
     .then(res => {
         if(res.data.errorDialog){
-            popWarningScreen('Iiii deu erro ao procurar pela lista de e-mails permitidos o cadastro.')
+            popWarningScreen(res.data.errorDialog)
             return
         }
+
+        console.log(res)
 
         console.log(res.data.freshManList)
 
