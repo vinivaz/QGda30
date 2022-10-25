@@ -19,7 +19,7 @@ routes.get('/', async(req, res)=>{
             }
         })
 
-        await freshManList.save()
+        //await freshManList.save()
 
         return res.json(freshManList)
 

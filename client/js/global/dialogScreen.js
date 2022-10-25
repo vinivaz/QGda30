@@ -54,7 +54,7 @@ export function popScreen(dialog, cb) {
 }
 
 export function popWarningScreen(dialog, element) {
-  $('div#content').append(newScreen(dialog))
+  $('div#content').append(warningScreen(dialog))
 
   if(element){
     element.append(warningScreen(dialog))
