@@ -37,9 +37,9 @@ $('.add-freshman').on('click', function(){
 
             <div class="screen-info">
                 <p>
-                    O cadastro de novos usuários do QG só é possivel aos e-mails que estiverem na registrados na lista de e-mails permitidos, administradores podem adicionar
-                    ou remover emails desta lista, após o registro, o e-mail tem 24 horas para cadastrar na conta do QG da 30, depois disso,
-                    o e-mail expira e será necessario que um administrador faça um novo registro.
+                    O cadastro de novos usuários do QG só é possivel aos e-mails que estiverem na registrados na lista de e-mails permitidos 
+                    administradores podem adicionar ou remover emails desta lista.<br> Após o registro o dono do e-mail tem 24 horas para 
+                    cadastrar na conta do QG da 30, depois disso, o e-mail expira e será necessario que um administrador faça um novo registro.<br>
                     O botão de entrar para o QG na página de cadastro só aparece caso exista algum e-mail não expirado na lista.
                 </p>
             </div>
