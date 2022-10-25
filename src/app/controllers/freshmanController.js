@@ -39,10 +39,12 @@ routes.post('/', async(req, res)=>{
 
         const newFreshman = await freshmanModel.findOneAndUpdate(
                 {
+                    email
+                },
+                {
                     email,
                     emailExpires: now,
-                    expired: false,
-
+                    expired: false
                 },
                 {
                     new: true,

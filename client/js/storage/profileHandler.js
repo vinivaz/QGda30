@@ -129,9 +129,9 @@ function getFreshmanList(){
 
         console.log(res)
 
-        console.log(res.data.freshManList)
+        console.log(res.data)
 
-        freshManList = res.data.freshManList
+        freshManList = res.data
         showFreshmanList()
         
 
