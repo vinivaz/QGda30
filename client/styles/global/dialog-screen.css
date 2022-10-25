@@ -213,7 +213,6 @@
 
 .add-user-screen .freshman-list-container .freshman-list{
   background: #e7e7e7e7;
-  height: 182px;
   border-radius: 0 0 4px 4px;
 }
 
@@ -231,7 +230,31 @@
 .add-user-screen .freshman-list-container .freshman-list .freshman-list-item{
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
 }
+
+.add-user-screen .add-freshman .freshman-email-input {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.add-user-screen .add-freshman .freshman-email-input input{
+  padding: 5px;
+  border: solid 1px #ddd;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+}
+
+.add-user-screen .add-freshman .freshman-email-input button{
+  padding: 5px;
+  border: solid 1px #ddd;
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+}
+
+
 
 .add-user-screen .freshman-list-container .freshman-list .freshman-list-item p, span{
   font-size: 12px;

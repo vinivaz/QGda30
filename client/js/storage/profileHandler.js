@@ -108,16 +108,29 @@ $('.add-freshman').on('click', function(){
                 popWarningScreen(res.data.errorDialog)
                 return
             }
+
+            var foundInFreshmanList = false;
+
+            for(var i = 0; i < freshManList.length; i++){
+                if(freshManList[i].email == res.data.email){
+                    freshManList[i] = res.data
+                    foundInFreshmanList = true
+                    
+                }                
+            }
+
+            if(!foundInFreshmanList){
+                freshManList.push(res.data)
+            }
             
-
-            freshManList.push(res.data)
-
             $('.freshman-email-input > input').val('')
+
             showFreshmanList()
         })
         .catch(err => {
             console.log(err)
             canMakeRequest = true;
+            popWarningScreen("Sorry, houve um erro, tenta denovo quem sabe..")
         })
     })
 
