@@ -13,7 +13,7 @@ var profileElement = $('div.profile-data')
 
 var usersElement = $('div.profile-box > .users')
 
-var freshManList;
+var freshManList = [];
 
 getProfile()
 
@@ -65,7 +65,15 @@ $('.add-freshman').on('click', function(){
                 </p>
             </div>
 
-
+            <div class="add-freshman">
+                <div class="add-freshman-header">
+                    <p>Adicione um e-mail a lista</p>
+                </div>
+                <div class="freshman-email-input">
+                    <input type="text" placeholder="e-mail" />
+                    <button class="add-email-btn">&#x2795;</button>
+                </div>
+            </div>
 
             <div class="freshman-list-container">
                 <div class="freshman-list-header">
@@ -78,7 +86,66 @@ $('.add-freshman').on('click', function(){
 
     var hideElement = popUpElement(addFreshmanScreen)
 
+    getFreshmanList()
+
+    $('.freshman-email-input > .add-email-btn').on('click', function(e){
+        var emailInput = $('.freshman-email-input > input')
+        emailInput.val().toLowerCase()
+
+        if(emailInput == '')return;
+
+        if(!canMakeRequest) return;
+        canMakeRequest = false;
+
+        api.post('/app/freshman/', {email: emailInput})
+        .then( res => {
+            canMakeRequest = true;
+            if(res.data.errorDialog){
+                popWarningScreen('Houve um erro ao adicionar um e-mail para a lista')
+                return
+            }
+
+            freshManList.push(res.data.newFreshman)
+
+            emailInput.val('')
+            showFreshmanList()
+        })
+        .catch(err => {
+            console.log(err)
+            canMakeRequest = true;
+        })
+    })
+
 })
+
+function getFreshmanList(){
+    api.get('/app/freshman/')
+    .then(res => {
+        if(res.data.errorDialog){
+            popWarningScreen('Iiii deu erro ao procurar pela lista de e-mails permitidos o cadastro.')
+            return
+        }
+
+        console.log(res.data.freshManList)
+
+        freshManList = res.data.freshManList
+        showFreshmanList()
+        
+
+    })
+}
+
+function showFreshmanList(){
+    freshManList.map( freshman => {
+        $('.freshman-list').append(`
+            <div class="freshman-list-item">
+                <p>${freshman.email}</p> 
+                ${freshman.expired == true? `<div class="is-expired"><span>expirado</span></div>`: ''} 
+                <button class="delete-freshman-list-item">apagar</button>
+            </div>
+        `)
+    })
+}
 
 export function getProfile(){
     api.get('/app/profile/find')

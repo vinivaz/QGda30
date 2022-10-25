@@ -217,6 +217,32 @@
   border-radius: 0 0 4px 4px;
 }
 
+.hiding-area .safe-area .add-user-screen .add-freshman{
+  display: flex;
+  flex-direction:  column;
+}
+
+.hiding-area .safe-area .add-user-screen .add-freshman .add-freshman-header p{
+  color: #000;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.add-user-screen .freshman-list-container .freshman-list .freshman-list-item{
+  display: flex;
+  flex-direction: row;
+}
+
+.add-user-screen .freshman-list-container .freshman-list .freshman-list-item p, span{
+  font-size: 12px;
+}
+
+.add-user-screen .freshman-list-container .freshman-list .freshman-list-item button{
+  border: none;
+  color: black;
+  padding: 4px;
+}
+
 
 
 
