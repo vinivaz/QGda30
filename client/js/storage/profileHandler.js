@@ -89,8 +89,8 @@ $('.add-freshman').on('click', function(){
     getFreshmanList()
 
     $('.freshman-email-input > .add-email-btn').on('click', function(e){
-        var emailInput = $('.freshman-email-input > input')
-        emailInput.val().toLowerCase()
+        var emailInput = $('.freshman-email-input > input').val().toLowerCase()
+
 
         if(emailInput == '')return;
 
@@ -110,9 +110,9 @@ $('.add-freshman').on('click', function(){
             }
             
 
-            freshManList.push(res.data.newFreshman)
+            freshManList.push(res.data)
 
-            emailInput.val('')
+            $('.freshman-email-input > input').val('')
             showFreshmanList()
         })
         .catch(err => {
