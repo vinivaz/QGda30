@@ -37,11 +37,31 @@ $('.add-freshman').on('click', function(){
 
             <div class="screen-info">
                 <p>
-                    <div>O cadastro de novos usuários do QG só é possivel aos e-mails que estiverem na registrados na lista de e-mails permitidos administradores podem adicionar ou remover emails desta lista.</div>
-                    <div><br></div>
-                    <div>Após o registro o dono do e-mail tem 24 horas para cadastrar na conta do QG da 30, depois disso, o e-mail expira e será necessario que um administrador faça um novo registro.</div>
-                    <div><br></div>
-                    <div>O botão de entrar para o QG na página de cadastro só aparece caso exista algum e-mail não expirado na lista.</div>"
+                    <div>
+                        <font color="#545454" face="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif">
+                            <span style="font-size: 12px;">O cadastro de novos usuários do QG só é possivel aos e-mails que estiverem na registrados na lista de e-mails permitidos administradores podem adicionar ou remover emails desta lista.
+                            </span>
+                        </font>
+                    </div>
+                    <div>
+                        <br>
+                    </div>
+                    <div>
+                        <font color="#545454" face="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif">
+                            <span style="font-size: 12px;">Após o registro o dono do e-mail tem 24 horas para cadastrar na conta do QG da 30, depois disso, o e-mail expira e será necessario que um administrador faça um novo registro.
+                            </span>
+                        </font>
+                    </div>
+                    <div>         
+                        <br>   
+                    </div>
+                    <div>
+                        <font color="#545454" face="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif">
+                            <span style="font-size: 12px;">
+                                O botão de entrar para o QG na página de cadastro só aparece caso exista algum e-mail não expirado na lista.
+                            </span>
+                        </font>
+                    </div>"
                 </p>
             </div>
 
