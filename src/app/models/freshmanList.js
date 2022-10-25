@@ -8,8 +8,8 @@ const freshmanList = new mongoose.Schema({
         unique: true,
     },
     emailExpires:{
-        type: Date,
-        select: false,
+        type: Date
+
     },
     expired:{
         type:Boolean,
