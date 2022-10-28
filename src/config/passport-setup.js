@@ -10,7 +10,7 @@ passport.use(
   new GoogleStrategy(
     {
       // options for strategy
-      callbackURL: 'https://qgda30.herokuapp.com/auth/google/callback/',
+      callbackURL: 'https://qgda30.herokuapp.com/app/auth/google/callback/',
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET
     },
