@@ -49,8 +49,6 @@ export function popScreen(dialog, cb) {
     $('div.dialog-surrounding').remove()
   })
 
-
-
   return {
     element: $('div.dialog-surrounding'),
     confirm: $('button.confirm'),

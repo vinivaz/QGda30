@@ -1,7 +1,11 @@
 const routes = require('express').Router();
+const jwt = require('jsonwebtoken');
+const passport = require('passport');
+const passportSetup = require('./config/passport-setup');
 
 const ownerController = require('./app/controllers/ownerController');
-const authConfig = require('./app/middlewares/auth');
+
+const authSecret = require('./config/auth.json');
 
 
 routes
@@ -19,9 +23,35 @@ routes
   //.post('/owner/change_password', ownerController.changePassword)
   .delete('app/delete', ownerController.delete)
 
+  .use(passport.initialize())
+
   .get('/login', (req, res) =>{
     return res.render('login.html')
   })
+
+  .get(
+    '/auth/google',
+    passport.authenticate('google', {
+      session: false,
+      scope: ["profile", "email"],
+      accessType: "offline",
+      approvalPrompt: "force"
+    })
+  )
+
+  .get(
+    '/auth/google/callback/',
+    passport.authenticate('google', { session: false }),
+    (req, res) => {
+
+      var { user } = req;
+
+      return res.json({
+        user,
+        token: jwt.sign({id: user._id},authSecret.secret,{expiresIn: 86400})
+      })      
+    }
+  )
 
   .get('/studio', setView, (req, res) =>{
     return res.render('studio.html')

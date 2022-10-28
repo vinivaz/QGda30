@@ -23,6 +23,10 @@ const ownerSchema = new mongoose.Schema({
     unique: true,
     lowercase: true,
   },
+  googleId: {
+    type: String,
+    default: null
+  },
   admin: {
     type: Boolean,
     default: false,
@@ -39,11 +43,11 @@ const ownerSchema = new mongoose.Schema({
 
 //ownerSchema.plugin(mongoosePaginate); 
 
-ownerSchema.pre('save', async function(next){
-  const hash = await bcrypt.hash(this.password, 10);
-  this.password = hash;
+// ownerSchema.pre('save', async function(next){
+//   const hash = await bcrypt.hash(this.password, 10);
+//   this.password = hash;
 
-  next();
-});
+//   next();
+// });
 
 module.exports = new mongoose.model('owner', ownerSchema);

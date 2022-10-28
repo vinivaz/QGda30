@@ -49,9 +49,11 @@ module.exports = {
 
       //const hash = await bcrypt.hash(password, 10);
 
+      const hashedPassword = await bcrypt.hash(password, 10);
+
       const owner = await ownerModel.create({
         name,
-        password,
+        password: hashedPassword,
         email,
         profile_img: "",
       });
@@ -197,7 +199,9 @@ module.exports = {
         return res.json({ error: 'Token has expired'});
       }
 
-      owner.password = password;
+      //const hashedPassword = await bcrypt.hash(password, 10);
+
+      owner.password = await bcrypt.hash(password, 10);
 
       await owner.save();
 

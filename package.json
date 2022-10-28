@@ -8,15 +8,12 @@
     "npm": "8.15.0"
   },
   "scripts": {
-
     "start": "node server.js",
     "test": "node server.js",
-    
-    "client-server":"webpack-dev-server --config webpack.dev.js",
+    "client-server": "webpack-dev-server --config webpack.dev.js",
     "start-server": " nodemon server.js",
     "other-build": "webpack --config webpack.prodev.js",
     "main-build": "webpack --config webpack.prod.js"
-    
   },
   "author": "",
   "license": "ISC",
@@ -50,6 +47,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.4",
     "multer": "^1.4.5-lts.1",
+    "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0",
     "slugify": "^1.6.5"
   }
 }
