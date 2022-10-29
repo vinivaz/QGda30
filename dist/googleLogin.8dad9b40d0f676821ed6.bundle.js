@@ -1,0 +1,1 @@
+console.log("o login pelo google desse jeito foi retirado");
