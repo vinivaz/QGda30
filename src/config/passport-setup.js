@@ -37,13 +37,14 @@ passport.use(
         const freshmanList = await freshmanModel.findOne({email})
 
         if(!freshmanList){
-          return res.json({errorDialog: 'Esse email não tem registro na lista de login permitidos'})
+          return done(null, false, { message: 'Esse email não tem registro na lista de login permitidos' })
+          
         }
 
         const now = new Date();
 
         if(now > freshmanList.emailExpires){
-          return res.json({ error: 'Token has expired'});
+          return done(null, false, { message: 'O registro desse email expirou' })
         }
 
         // register user and return

@@ -39,19 +39,34 @@ routes
     })
   )
 
-  .get(
-    '/auth/google/callback/',
-    passport.authenticate('google', { session: false }),
-    (req, res) => {
+  .get('/auth/google/callback/', (req, res, next) => {
 
-      var { user } = req;
+    passport.authenticate('google', (err, user, info) => {
+
+
+      //if (err) { return next(err) }
+      if (!user) { return res.json( { message: info.message }) }
 
       return res.json({
         user,
         token: jwt.sign({id: user._id},authSecret.secret,{expiresIn: 86400})
-      })      
-    }
-  )
+      }) 
+    })(req, res, next);   
+  })
+
+  // .get(
+  //   '/auth/google/callback/',
+  //   passport.authenticate('google', { session: false }),
+  //   (req, res) => {
+ 
+  //     var { user } = req;
+
+  //     return res.json({
+  //       user,
+  //       token: jwt.sign({id: user._id},authSecret.secret,{expiresIn: 86400})
+  //     })      
+  //   }
+  // )
 
   .get('/studio', setView, (req, res) =>{
     return res.render('studio.html')
